@@ -1,5 +1,6 @@
 syntax enable
-colorscheme gruvbox
+colorscheme desert
+
 set background=dark
 
 set numberwidth=4
@@ -17,6 +18,7 @@ set ruler
 set guicursor=
 set foldlevel=99
 set nowrap
+
 set wildmenu
 
 set colorcolumn=81
@@ -58,21 +60,21 @@ set autoindent
 set smartindent
 
 
-
 set updatetime=50
 
 " highlight the line where the cursor is located
 set cursorline
-set cursorcolumn
+
+hi CursorLine term=bold cterm=bold guibg=Grey40
+" set cursorcolumn
 " set scroll offset (start scrolling when cursor at line n - 10
-set scrolloff=30
+set scrolloff=15
 
 " ======================================
 " Mappings
 " ======================================
 " map escape
 inoremap jk <ESC>
-inoremap kj <ESC>o
 
 " ======================================
 " declarations
@@ -80,6 +82,16 @@ inoremap kj <ESC>o
 let mapleader = " "
 let maplocalleader = "\\"
 
+" Copy to clipboard
+vnoremap <C-y> "+y
+nnoremap <C-y> "+y
+" Copy from clipboard
+vnoremap <C-p> "+p
+nnoremap <C-p> "+p
+" Save
+nnoremap <C-s> :w>cr>
+vnoremap <C-s> :w>cr>
+inoremap <C-s> :w>cr>
 
 " normal mode mapping
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -88,34 +100,30 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>sa  gg<s-v>G<cr>
 nnoremap <leader>vt :vert term<cr>
 set list
-set listchars=tab:→\ ,space:»,trail:·,precedes:«,extends:»,eol:¶
+set listchars=tab:‣\ ,trail:·,precedes:«,extends:»
+" set listchars=tab:→\ ,space:»,trail:·,precedes:«,extends:»
 " line movement
 nnoremap L <esc>$
 nnoremap H <esc>^
 nnoremap Y <esc>y$
 
 " helpfull commands
-nnoremap <leader>" <esc>ea"<esc>bi"<esc>lel
 nnoremap <leader>bs <esc>:buffers<cr>
 nnoremap <leader>rs <esc>:registers<cr>
 nnoremap <leader>g :execute "grep! -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
 nnoremap <leader>G :execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
-nnoremap <leader>ex :Ex<cr>
+nnoremap <leader>e :Ex<cr>
+nnoremap <leader><space> :noh<cr>
 
 
 " visual mode commands
-vnoremap <leader>" <esc>`>a"<esc>`<i"
-
-" operands {{{
-onoremap fp :<c-v>norma! f(vi)<cr>
-onoremap im :<c-u>execute "normal! ?def\r:nohlsearch\rjvg_/return\rg_"<cr>
-" }}}
+"vnoremap" <leader>" <esc>`>a"<esc>`<i"
 
 
 " Python file settings -------------------------{{{
 augroup filetype_python
     autocmd!
-    autocmd FileType python setlocal foldmethod=indent 
+    autocmd FileType python setlocal foldmethod=indent
     autocmd FileType python vnoremap <localleader>ac :'<,'>:norm i# <cr>
     autocmd FileType python vnoremap <localleader>rc :'<,'>:norm 2s<cr>
     autocmd FileType python :iabbrev <buffer> for for<space>el<space>in<space>iterable:<esc>3bviw<left>
@@ -128,7 +136,7 @@ augroup END
 " Vimscript file settings -------------------------{{{
 augroup filetype_vim
     autocmd!
-    autocmd FileType vim setlocal foldmethod=marker 
+    autocmd FileType vim setlocal foldmethod=marker
 augroup END
 " }}}
 " Haskell file settings -------------------------{{{
@@ -162,38 +170,21 @@ nnoremap <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .
 " }}}
 
 
-function! TabComplete()
-    let line = getline('.')
-    let substr = strpart(line, 0, col('.')+1)
-    let substr = matchstr(substr, "[^ \t]*$")
-    if (strlen(substr)==0)
-        return "\<tab>"
-    endif
-    return "\<C-X>\<C-O>"
-endfunction
-
-
 function! CompleteIt()
     let line = getline('.')
     let substr = strpart(line, 0, col('.')+1)
-    let substr = matchstr(substr, "[^ \t\n]*$")
-    let has_period = match(substr, '\.') != -1
-    let has_slash = match(substr, '\/') != -1
-    if (strlen(substr) != 0)
-        if (!has_period && !has_slash)
-            call feedkeys("\<C-X>\<C-P>")
-        elseif (has_slash)
-            call feedkeys("\<C-X>\<C-F>")
-        endif
+    let substr = matchstr(substr, "[^ \t]*$")
+    if (strlen(substr) >= 2)
+        call feedkeys("\<C-X>\<C-N>")
     endif
 endfunction
 
 
-inoremap <tab> <c-r>=TabComplete()<CR>
 augroup completion
     autocmd!
     autocmd TextChangedI * call CompleteIt()
 augroup END
+
 
 augroup incsearch-highlight
     autocmd!
@@ -201,8 +192,4 @@ augroup incsearch-highlight
     autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
 
-au FileType php setl ofu=phpcomplete#CompletePHP
-au FileType ruby,eruby setl ofu=rubycomplete#Complete
-au FileType html,xhtml setl ofu=htmlcomplete#CompleteTags
 au FileType c setl ofu=ccomplete#CompleteCpp
-au FileType css setl ofu=csscomplete#CompleteCSS
