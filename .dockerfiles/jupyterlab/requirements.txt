@@ -1,0 +1,7 @@
+jupyterlab
+jupyterlab-vim
+numpy
+pandas
+matplotlib
+seaborn
+requests

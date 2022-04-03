@@ -1,0 +1,21 @@
+version: "2.3"
+services:
+  jupyterlab:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        REQUIREMENTS_FILE: "requirements.txt"
+    image: "jupyter-lab"
+    command: ["jupyter", "lab", "--allow-root", "--port=8888", "--ip=0.0.0.0", "--no-browser"]
+    container_name: "jupyter-lab:dev"
+    runtime: nvidia
+    volumes:
+      - /home/hsc:/environment/workdir
+    working_dir: "/environment/workdir"
+    ports:
+      - "8888:8888"
+    tty: true
+    stdin_open: true
+    privileged: true
+
