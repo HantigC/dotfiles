@@ -1,4 +1,5 @@
-FROM nvidia/cuda:11.4.1-runtime-ubuntu18.04
+ARG BASE_IMAGE=ubuntu:18.04
+FROM ubuntu:18.04
 
 ARG PYTHON=python3.7
 ARG REQUIREMENTS_FILE=requirements.txt
@@ -21,7 +22,7 @@ RUN apt-get update \
 WORKDIR /environment
 COPY ${REQUIREMENTS_FILE} requirements.txt
 RUN ${PYTHON} -m pip install --upgrade pip wheel \
-    # && ${PYTHON} -m pip install jupyterlab jupyterlab-vim \
+    && ${PYTHON} -m pip install jupyterlab jupyterlab-vim \
     && ${PYTHON} -m pip install -r ${REQUIREMENTS_FILE}
 
-CMD echo "Give me some command"
+CMD jupyter lab --allow-root --port=8888

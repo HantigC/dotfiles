@@ -41,6 +41,7 @@ end
 local servers = {
   'pyright',
   -- 'pylsp',
+  'dockerls',
   'rust_analyzer',
   'hls',
   'clangd',

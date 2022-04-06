@@ -5,10 +5,30 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
+        BASE_IMAGE: "ubuntu:18.04"
         REQUIREMENTS_FILE: "requirements.txt"
     image: "jupyter-lab"
-    command: ["jupyter", "lab", "--allow-root", "--port=8888", "--ip=0.0.0.0", "--no-browser"]
-    container_name: "jupyter-lab:dev"
+    command: ["jupyter", "lab", "--allow-root", "--port=8888", "--ip=0.0.0.0"]
+    container_name: "jupyter-lab"
+    volumes:
+      - /home/hsc:/environment/workdir
+    working_dir: "/environment/workdir"
+    ports:
+      - "8888:8888"
+    tty: true
+    stdin_open: true
+    privileged: true
+
+  jupyterlab-cuda:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BASE_IMAGE: "nvidia/cuda:11.2.0-cudnn8-runtime-ubuntu18.04"
+        REQUIREMENTS_FILE: "requirements.txt"
+    image: "jupyter-lab-cuda"
+    command: ["jupyter", "lab", "--allow-root", "--port=8888"]
+    container_name: "jupyter-lab-cuda"
     runtime: nvidia
     volumes:
       - /home/hsc:/environment/workdir
@@ -18,4 +38,5 @@ services:
     tty: true
     stdin_open: true
     privileged: true
+
 
