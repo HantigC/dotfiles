@@ -55,5 +55,5 @@ pyright
 jupyterlab
 jupyterlab-vim
 jupyterlab-lsp
-"python-lsp-server[all]"
+python-lsp-server[all]
 # jedi-language-server
