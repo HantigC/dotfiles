@@ -1,15 +1,15 @@
-ARG BASE_IMAGE=ubuntu:18.04
+ARG BASE_IMAGE=nvidia/cuda:11.2.0-cudnn8-runtime-ubuntu18.04
 FROM ${BASE_IMAGE}
 
 ARG PYTHON=python3.7
 ARG REQUIREMENTS_FILE=requirements.txt
 ENV DEBIAN_FRONTEND=noninteractive
 
-# RUN rm -f /etc/apt/sources.list.d/cuda.list
-# RUN rm -f /etc/apt/sources.list.d/nvidia-ml.list
-# RUN apt-key del 7fa2af80
-# RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
-# RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
+RUN rm -f /etc/apt/sources.list.d/cuda.list
+RUN rm -f /etc/apt/sources.list.d/nvidia-ml.list
+RUN apt-key del 7fa2af80
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
@@ -42,6 +42,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+
 WORKDIR /tmp/neovim
 
 
@@ -64,8 +65,6 @@ RUN apt-get update \
     && make && make install \
     && git clone --bare https://github.com/HantigC/dotfiles.git $HOME/.dotfiles \
     && git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout
-
-
 
 
 WORKDIR /environment/.python_envs

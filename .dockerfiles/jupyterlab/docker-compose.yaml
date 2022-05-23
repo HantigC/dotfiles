@@ -5,16 +5,16 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        BASE_IMAGE: "ubuntu:18.04"
-        REQUIREMENTS_FILE: "requirements.txt"
-    image: "jupyter-lab"
-    command: ["jupyter", "lab", "--allow-root", "--port=8888", "--ip=0.0.0.0"]
-    container_name: "jupyter-lab"
+        BASE_IMAGE: "ubuntu:20.04"
+        REQUIREMENTS_FILE: "requirements.dev.txt" 
+    image: "hsc-jupyter-lab"
+    # command: ["jupyter", "lab", "--allow-root", "--port=8888", "--ip=0.0.0.0"]
+    container_name: "hsc-jupyter-lab"
     volumes:
-      - /home/hsc:/environment/workdir
-    working_dir: "/environment/workdir"
+      - /data:/data
+    working_dir: "/data"
     ports:
-      - "8888:8888"
+      - "4568:8888"
     tty: true
     stdin_open: true
     privileged: true
@@ -22,19 +22,20 @@ services:
   jupyterlab-cuda:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: cuda.Dockerfile
       args:
-        BASE_IMAGE: "nvidia/cuda:11.2.0-cudnn8-runtime-ubuntu18.04"
-        REQUIREMENTS_FILE: "requirements.txt"
-    image: "jupyter-lab-cuda"
-    command: ["jupyter", "lab", "--allow-root", "--port=8888"]
-    container_name: "jupyter-lab-cuda"
+        BASE_IMAGE: "nvidia/cuda:11.2.0-cudnn8-runtime-ubuntu20.04"
+        REQUIREMENTS_FILE: "requirements.dev.txt"
+    image: "hsc-jupyter-lab-cuda"
+    # command: ["jupyter", "lab", "--allow-root", "--port=8888", "--ip=0.0.0.0"]
+    container_name: "hsc-jupyter-lab-cuda"
     runtime: nvidia
     volumes:
-      - /home/hsc:/environment/workdir
-    working_dir: "/environment/workdir"
+      - /data:/data
+    working_dir: "/data"
+    shm_size: '32gb'
     ports:
-      - "8888:8888"
+      - "4569:8888"
     tty: true
     stdin_open: true
     privileged: true
