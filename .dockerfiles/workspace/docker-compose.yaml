@@ -1,0 +1,18 @@
+version: "2.3"
+services:
+  wp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BASE_IMAGE: "ubuntu:20.04"
+        REQUIREMENTS_FILE: "requirements.txt"
+    image: "hsc-jupyter-lab"
+    # command: ["jupyter", "lab", "--allow-root", "--port=8888", "--ip=0.0.0.0"]
+    container_name: "wp"
+    volumes:
+      - /data:/data
+    tty: true
+    stdin_open: true
+    privileged: true
+

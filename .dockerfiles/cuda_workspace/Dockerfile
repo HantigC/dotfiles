@@ -74,6 +74,4 @@ RUN ${PYTHON} -m venv default \
     && /environment/.python_envs/default/bin/python3.7 -m pip install --upgrade pip wheel \
     && /environment/.python_envs/default/bin/python3.7 -m pip install -r requirements.txt
 
-SHELL ["/bin/bash", "-c"]
-
-CMD /environment/.python_envs/default/bin/python3.7 -m jupyter lab --allow-root --port=8888 --ip=0.0.0.0
+CMD ["bash"]

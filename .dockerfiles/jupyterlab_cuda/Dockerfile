@@ -1,9 +1,15 @@
-ARG BASE_IMAGE=ubuntu:18.04
+ARG BASE_IMAGE=nvidia/cuda:11.2.0-cudnn8-runtime-ubuntu18.04
 FROM ${BASE_IMAGE}
 
 ARG PYTHON=python3.7
 ARG REQUIREMENTS_FILE=requirements.txt
 ENV DEBIAN_FRONTEND=noninteractive
+
+RUN rm -f /etc/apt/sources.list.d/cuda.list
+RUN rm -f /etc/apt/sources.list.d/nvidia-ml.list
+RUN apt-key del 7fa2af80
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
@@ -31,10 +37,11 @@ RUN apt-get update \
         ${PYTHON} \
         python3-pip \
         python3-setuptools \
-        ${PYTHON}-venv \
-        ${PYTHON}-distutils \
+        python3.7-venv \
+        python3.7-distutils \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
 
 WORKDIR /environment/.python_envs
 COPY ${REQUIREMENTS_FILE} requirements.txt
@@ -42,5 +49,6 @@ COPY ${REQUIREMENTS_FILE} requirements.txt
 RUN ${PYTHON} -m venv default \
     && /environment/.python_envs/default/bin/python3.7 -m pip install --upgrade pip wheel \
     && /environment/.python_envs/default/bin/python3.7 -m pip install -r requirements.txt
+
 
 CMD /environment/.python_envs/default/bin/python3.7 -m jupyter lab --allow-root --port=8888 --ip=0.0.0.0

@@ -1,0 +1,30 @@
+numpy>=1.18.5
+pandas
+opencv-python>=4.1.2
+PyYAML>=5.3.1
+scipy>=1.4.1
+tensorboard>=1.5
+torch==1.7.0
+torchvision==0.8.1
+tqdm>=4.41.0
+Pillow
+sympy
+scikit-image
+scikit-learn==0.23.2
+requests
+imagesize
+wget
+more_itertools
+aiohttp
+aiofiles
+# geopy
+ipympl
+
+# plotting ------------------------------------
+matplotlib>=3.2.2
+seaborn>=0.11.0
+# jupyterlab
+jupyterlab
+jupyterlab-vim
+jupyterlab-lsp
+jedi-language-server

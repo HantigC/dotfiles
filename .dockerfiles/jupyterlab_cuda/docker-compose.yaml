@@ -1,0 +1,24 @@
+version: "2.3"
+services:
+  jupyterlab-cuda:
+    build:
+      context: .
+      dockerfile: cuda.Dockerfile
+      args:
+        BASE_IMAGE: "nvidia/cuda:11.2.0-cudnn8-runtime-ubuntu20.04"
+        REQUIREMENTS_FILE: "requirements.txt"
+    image: "hsc-jupyter-lab-cuda"
+    # command: ["jupyter", "lab", "--allow-root", "--port=8888", "--ip=0.0.0.0"]
+    container_name: "hsc-jupyter-lab-cuda"
+    runtime: nvidia
+    volumes:
+      - $HOME:/environment
+    working_dir: "/data"
+    shm_size: '32gb'
+    ports:
+      - "4569:8888"
+    tty: true
+    stdin_open: true
+    privileged: true
+
+

@@ -1,0 +1,23 @@
+version: "2.3"
+services:
+  wp-cuda:
+    build:
+      context: .
+      dockerfile: cuda.Dockerfile
+      args:
+        BASE_IMAGE: "nvidia/cuda:11.2.0-cudnn8-runtime-ubuntu20.04"
+        REQUIREMENTS_FILE: "requirements.txt"
+    image: "wp-cuda"
+    # command: ["jupyter", "lab", "--allow-root", "--port=8888", "--ip=0.0.0.0"]
+    container_name: "wp-cuda"
+    runtime: nvidia
+    volumes:
+      - ${HOME}:/workspace
+    shm_size: '32gb'
+    ports:
+      - "4569:8888"
+    tty: true
+    stdin_open: true
+    privileged: true
+
+
