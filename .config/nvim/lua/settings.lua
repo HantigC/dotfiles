@@ -24,10 +24,12 @@ vim.o.splitright = true
 vim.o.scrolloff = 8
 vim.o.pumheight = 10
 
+vim.o.laststatus = 3
+
 vim.cmd('set noswapfile')
 vim.o.hidden = true
 vim.o.lazyredraw = true
-vim.o.history = 500
+vim.o.history = 1000
 vim.wo.wrap = false
 
 vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'

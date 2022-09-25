@@ -28,7 +28,7 @@ alias svr='. ~/.vimrc'
 #############################################
 #############################################
 # Shorcuts
-## docker 
+## docker
 # image
 alias did='docker images --filter "dangling=true"'
 alias dil='docker image ls'
@@ -39,12 +39,14 @@ alias dirm='docker image rm'
 alias dib='docker image build'
 alias dibt='docker image build -t'
 alias dip='docker image prun'
+alias dils='docker image ls'
 # container
 alias dcl='docker container ls'
 alias dclg='docker container ls | grep'
 alias dcla='docker container ls -a'
 alias dclag='docker container ls -a | grep'
 alias dcrm='docker container rm'
+alias dcls='docker container ls'
 ## tmux
 alias tl='tmux ls'
 alias tnn='tmux newm -s'
@@ -77,3 +79,4 @@ alias w1n='watch -n 1 nvidia-smi'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 source $HOME/.move_aliases
 
+alias ath='bluetoothctl connect  00:0A:45:19:74:75'

@@ -15,7 +15,7 @@ return require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}
   -- Color scheme
   use { "navarasu/onedark.nvim" }
-  use { 'sainnhe/gruvbox-material' }
+  use { 'ellisonleao/gruvbox.nvim' }
   use { "rebelot/kanagawa.nvim" }
   use { "marko-cerovac/material.nvim" }
   use { "lunarvim/darkplus.nvim" }
@@ -31,11 +31,12 @@ return require('packer').startup(function()
   use { 'neovim/nvim-lspconfig' }
   use { 'hrsh7th/nvim-compe' }
   use { 'neovimhaskell/haskell-vim' }
+  use { 'tpope/vim-fugitive' }
 
   -- Lua development
   -- use { 'tjdevries/nlua.nvim' }
-  use {"nvim-treesitter/nvim-treesitter"}
-  use 'sheerun/vim-polyglot'
+  use { "nvim-treesitter/nvim-treesitter" }
+  use { "sheerun/vim-polyglot" }
   -- use {
   --     "nvim-treesitter/nvim-treesitter",
   --     event = "BufRead",
