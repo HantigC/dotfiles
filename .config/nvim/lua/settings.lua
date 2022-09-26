@@ -24,6 +24,8 @@ vim.o.splitright = true
 vim.o.scrolloff = 8
 vim.o.pumheight = 10
 
+vim.opt.listchars = { space = '_', tab = '>~' }
+
 vim.o.laststatus = 3
 
 vim.cmd('set noswapfile')
@@ -31,11 +33,15 @@ vim.o.hidden = true
 vim.o.lazyredraw = true
 vim.o.history = 1000
 vim.wo.wrap = false
+vim.wo.list = true
+
+
 
 vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 vim.cmd [[au BufWritePre * :%s/\s\+$//e]]
 vim.cmd [[
   autocmd FileType xml,html,xhtml,css,scss,javascript,lua,yaml setlocal shiftwidth=2 tabstop=2
+  autocmd FileType make setlocal noexpandtab softtabstop=0
 ]]
 
 vim.cmd [[
