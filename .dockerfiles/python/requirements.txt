@@ -1,0 +1,55 @@
+Cython
+matplotlib>=3.2.2
+numpy>=1.18.5
+opencv-python>=4.1.2
+Pillow
+PyYAML>=5.3.1
+scipy>=1.4.1
+tensorboard>=1.5
+torch==1.7.0
+torchvision==0.8.1
+tqdm>=4.41.0
+fire
+elasticsearch
+python-logstash
+logstash_formatter
+pygeohash
+amqpstorm==2.7.2
+h5py
+Pillow
+scipy
+sympy
+scikit-image
+scikit-learn==0.23.2
+protobuf
+requests
+imagesize
+psycopg2-binary
+wget
+more_itertools
+aiohttp
+aiofiles
+geopy
+ipympl
+
+# logging -------------------------------------
+# wandb
+
+# plotting ------------------------------------
+seaborn>=0.11.0
+pandas
+xgboost
+
+# export --------------------------------------
+# coremltools>=4.1
+# onnx>=1.8.1
+# scikit-learn==0.19.2  # for coreml quantization
+
+# extras --------------------------------------
+thop  # FLOPS computation
+# pycocotools>=2.0.0  # COCO mAP
+angles
+folium
+
+python-lsp-server[all]
+# jedi-language-server
