@@ -40,6 +40,8 @@ function dce(){
     docker container exec -it $1 bash
 }
 
-function install_python_lsp(){
-    python -m pip install 'python-lsp-server[all]'
+function install_python_dev(){
+    if [ -f "${HOME}/.dev.requirements.txt" ]; then
+        python -m pip install -r "${HOME}/.dev.requirements.txt"
+    fi
 }
