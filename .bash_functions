@@ -1,8 +1,8 @@
-function  dtop(){     
-    for container_id in `docker ps -a | awk '{print $1}'` 
-    do         
+function  dtop(){
+    for container_id in `docker ps -a | awk '{print $1}'`
+    do
         echo
-        echo "Container Id: $container_id" 
+        echo "Container Id: $container_id"
         docker container top $container_id
         echo
     done
@@ -38,4 +38,8 @@ function len(){
 
 function dce(){
     docker container exec -it $1 bash
+}
+
+function install_python_lsp(){
+    python -m pip install 'python-lsp-server[all]'
 }
