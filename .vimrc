@@ -8,7 +8,7 @@ set numberwidth=4
 filetype plugin on
 filetype indent on
 
-syntax on
+syntax on   
 
 set exrc
 
@@ -22,7 +22,7 @@ set nowrap
 set wildmenu
 
 set colorcolumn=81
-set signcolumn=yes
+"set signcolumn=yes
 set foldcolumn=1
 " disable errorbell
 set noerrorbells
@@ -100,7 +100,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>sa  gg<s-v>G<cr>
 nnoremap <leader>vt :vert term<cr>
 set list
-set listchars=tab:‣\ ,trail:·,precedes:«,extends:»
+set listchars=trail:�
 " set listchars=tab:→\ ,space:»,trail:·,precedes:«,extends:»
 " line movement
 nnoremap L <esc>$
@@ -170,26 +170,11 @@ nnoremap <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .
 " }}}
 
 
-function! CompleteIt()
-    let line = getline('.')
-    let substr = strpart(line, 0, col('.')+1)
-    let substr = matchstr(substr, "[^ \t]*$")
-    if (strlen(substr) >= 2)
-        call feedkeys("\<C-X>\<C-N>")
-    endif
-endfunction
 
-
-augroup completion
-    autocmd!
-    autocmd TextChangedI * call CompleteIt()
-augroup END
-
-
-augroup incsearch-highlight
-    autocmd!
-    autocmd CmdlineEnter /,\? :set hlsearch
-    autocmd CmdlineLeave /,\? :set nohlsearch
-augroup END
+"augroup incsearch-highlight
+"    autocmd!
+"    autocmd CmdlineEnter /,\? :set hlsearch
+"    autocmd CmdlineLeave /,\? :set nohlsearch
+"augroup END
 
 au FileType c setl ofu=ccomplete#CompleteCpp
