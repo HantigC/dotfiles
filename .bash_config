@@ -1,9 +1,10 @@
 function source_if_exists(){
     if [ -f $1 ]; then
+        echo "sourcing ${1}"
         source $1
     fi
 }
 
-source_if_exists "~/.bash_aliases"
-source_if_exists "~/.bash_functions"
-source_if_exists "~/.bash_settings"
+source_if_exists "${HOME}/.bash_aliases"
+source_if_exists "${HOME}/.bash_functions"
+source_if_exists "${HOME}/.bash_settings"
