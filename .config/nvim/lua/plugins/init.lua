@@ -36,7 +36,24 @@ return require('packer').startup(function()
   -- Lua development
   -- use { 'tjdevries/nlua.nvim' }
   use { "nvim-treesitter/nvim-treesitter" }
-  use { "sheerun/vim-polyglot" }
+  use {
+    "sheerun/vim-polyglot",
+    requires = {
+      {
+        "m-demare/hlargs.nvim",
+        config = function()
+          require('hlargs').setup()
+        end
+      }
+    }
+
+  }
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+  }
   -- use {
   --     "nvim-treesitter/nvim-treesitter",
   --     event = "BufRead",

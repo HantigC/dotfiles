@@ -28,10 +28,7 @@ map('n', '<Leader>vs', ':so $MYVIMRC<cr>', noremap)
 
 
 -- terminal mode moving
-map('t', '<A-h>', [[<C-\><C-N><C-w>h]], noremap)
-map('t', '<A-j>', [[<C-\><C-N><C-w>j]], noremap)
-map('t', '<A-k>', [[<C-\><C-N><C-w>k]], noremap)
-map('t', '<A-l>', [[<C-\><C-N><C-w>l]], noremap)
+map('t', '<c-w><c-w>', [[<C-\><C-N><c-w><c-w>]], noremap)
 map('t', '<c-space>', [[<C-\><C-N>]], noremap)
 -- Resizing-splits
 map('n', '<A-k>', ':resize +5<CR>', noremap)

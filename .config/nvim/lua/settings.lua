@@ -24,9 +24,6 @@ vim.o.splitright = true
 vim.o.scrolloff = 8
 vim.o.pumheight = 10
 
-vim.opt.listchars = { space = '_', tab = '>~' }
-
-vim.o.laststatus = 3
 
 vim.cmd('set noswapfile')
 vim.o.hidden = true
@@ -35,6 +32,21 @@ vim.o.history = 1000
 vim.wo.wrap = false
 vim.wo.list = true
 
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  float = {
+    border = "single",
+    format = function(diagnostic)
+      return string.format(
+        "%s (%s) [%s]",
+        diagnostic.message,
+        diagnostic.source,
+        diagnostic.code or diagnostic.user_data.lsp.code
+      )
+    end,
+  },
+})
 
 
 vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
