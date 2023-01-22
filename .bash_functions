@@ -31,11 +31,32 @@ function install_pyenv(){
 
 }
 
+function install_nerdfonts(){
+    mkdir -p ~/.local/share/fonts
+    cd ~/.local/share/fonts \
+        && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" \
+            https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
+}
 
 function len(){
     ls | wc -w
 }
 
+function install_neovim_pre(){
+    sudo apt-get install \
+        ninja-build \
+        gettext \
+        libtool \
+        libtool-bin \
+        autoconf \
+        automake \
+        cmake \
+        g++ \
+        pkg-config \
+        unzip \
+        curl \
+        doxygen
+}
 function dce(){
     docker container exec -it $1 bash
 }

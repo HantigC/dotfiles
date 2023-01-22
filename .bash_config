@@ -8,3 +8,7 @@ function source_if_exists(){
 source_if_exists "${HOME}/.bash_aliases"
 source_if_exists "${HOME}/.bash_functions"
 source_if_exists "${HOME}/.bash_settings"
+
+if [ -f $HOME/.tmux.config ]; then
+    tmux source $HOME/.tmux.config
+fi
