@@ -7,6 +7,9 @@ function  dtop(){
         echo
     done
 }
+function install_telescope_dep(){
+    sudo apt-get install ripgrep fd-find
+}
 
 function install_pyenv(){
     sudo apt-get install -y \
