@@ -78,5 +78,6 @@ alias w1='watch -n 1'
 alias w1n='watch -n 1 nvidia-smi'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 source $HOME/.move_aliases
+alias nv='nvim +NvimTreeToggle'
 
 alias ath='bluetoothctl connect  00:0A:45:19:74:75'
