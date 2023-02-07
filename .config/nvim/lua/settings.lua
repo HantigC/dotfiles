@@ -17,6 +17,7 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.autoindent = true
 vim.o.wildmode = 'full'
+vim.o.laststatus = 3
 
 vim.o.splitbelow = true
 vim.o.splitright = true

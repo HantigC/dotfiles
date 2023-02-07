@@ -24,3 +24,9 @@ require("nvim-tree").setup({
     dotfiles = true,
   },
 })
+
+local noremap = { noremap = true }
+vim.api.nvim_set_keymap('n', '<Leader>ee', ':NvimTreeFocus<cr>', noremap)
+vim.api.nvim_set_keymap('n', '<Leader>et', ':NvimTreeToggle<cr>', noremap)
+vim.api.nvim_set_keymap('n', '<Leader>ef', ':NvimTreeFindFile<cr>', noremap)
+vim.api.nvim_set_keymap('n', '<Leader>ec', ':NvimTreeCollapse<cr>', noremap)

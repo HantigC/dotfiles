@@ -64,14 +64,10 @@ return require('packer').startup(function()
 
   -- Vim dispatch
   -- use { 'tpope/vim-dispatch' }
-  -- use {
-  --   'nvim-lualine/lualine.nvim',
-  --   event = "VimEnter",
-  --   config = function()
-  --     require("plugins.lualine").setup()
-  --   end,
-  --   requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  -- }
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
 
   -- Fugitive for Git
   -- use { 'tpope/vim-fugitive' }
