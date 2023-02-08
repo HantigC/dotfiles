@@ -1,3 +1,13 @@
+function import(import_name)
+
+  local status_ok, treesitter = pcall(require, import_name)
+  if not status_ok then
+    print "treesitter not ok!"
+    return
+  end
+
+
+end
 require "settings"
 require "mappings"
 require "statusline"
