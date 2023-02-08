@@ -1,5 +1,5 @@
 require("utils").safe_import(
-  "nvim-treesitter",
+  "nvim-treesitter.configs",
   function (treesitter)
     treesitter.setup {
       ensure_installed = {

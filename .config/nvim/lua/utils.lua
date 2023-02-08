@@ -7,6 +7,7 @@ function utils.safe_import(import_name, setup_function)
     return
   end
   setup_function(module)
+  vim.notify(import_name .. " loaded!")
   return
 end
 
