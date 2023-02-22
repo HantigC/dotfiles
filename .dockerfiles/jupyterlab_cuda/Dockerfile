@@ -42,13 +42,22 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /tmp/neovim
+RUN git clone --bare https://github.com/HantigC/dotfiles.git $HOME/.dotfiles \
+    && git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout \
+    && wget https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb \
+    && apt-get install ./nvim-linux64.deb
 
-WORKDIR /environment/.python_envs
+WORKDIR /.python_envs
+RUN ${PYTHON} -m venv default
+ENV DEFAULT_ENV=/.python_envs/default/bin
+ENV PATH ${DEFAULT_ENV}:${PATH}
+
+
 COPY ${REQUIREMENTS_FILE} requirements.txt
-
-RUN ${PYTHON} -m venv default \
-    && /environment/.python_envs/default/bin/python3.7 -m pip install --upgrade pip wheel \
-    && /environment/.python_envs/default/bin/python3.7 -m pip install -r requirements.txt
+RUN python -m pip install --upgrade pip wheel \
+    && python -m pip install -r requirements.txt
 
 
-CMD /environment/.python_envs/default/bin/python3.7 -m jupyter lab --allow-root --port=8888 --ip=0.0.0.0
+WORKDIR /
+CMD python -m jupyter lab --allow-root --port=8888 --ip=0.0.0.0
