@@ -1,4 +1,3 @@
-
 require("utils").safe_import(
   "lspconfig",
   function (lspconfig)
@@ -40,6 +39,7 @@ require("utils").safe_import(
 
 
 
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
     -- Use a loop to conveniently call 'setup' on multiple servers and
     -- map buffer local keybindings when the language server attaches
     local servers = {
@@ -51,6 +51,7 @@ require("utils").safe_import(
       'clangd',
       'bashls',
       'ltex',
+      'tsserver',
     }
 
 
@@ -62,5 +63,29 @@ require("utils").safe_import(
         }
       }
     end
+    --Enable (broadcasting) snippet capability for completion
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    local web_lsps = {
+      'html',
+      'cssls',
+    }
+
+    for _, lsp in ipairs(web_lsps) do
+      lspconfig[lsp].setup {
+        capabilities = capabilities,
+        init_options = {
+          configurationSection = { "html", "css", "javascript" },
+          embeddedLanguages = {
+            css = true,
+            javascript = true
+          },
+          provideFormatter = true
+        }
+      }
+    end
+
+
+
   end
 )
