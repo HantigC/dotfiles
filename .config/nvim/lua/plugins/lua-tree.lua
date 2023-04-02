@@ -22,7 +22,7 @@ require("utils").safe_import(
         group_empty = true,
       },
       filters = {
-        dotfiles = true,
+        dotfiles = false,
       },
     })
 
