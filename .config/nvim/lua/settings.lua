@@ -62,6 +62,9 @@ vim.cmd [[
       autocmd!
       autocmd BufRead,BufNewFile *.pl,*.PL set filetype=prolog
       autocmd BufRead,BufNewFile *.vsh,*fsh set filetype=glsl
+      autocmd BufRead,BufNewFile .tmux.config set filetype=sh
+      autocmd BufRead,BufNewFile .bash_* set filetype=sh
+
   augroup END
 ]]
 
