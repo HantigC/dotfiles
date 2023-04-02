@@ -5,10 +5,12 @@ function source_if_exists(){
     fi
 }
 
-source_if_exists "${HOME}/.bash_aliases"
-source_if_exists "${HOME}/.bash_functions"
-source_if_exists "${HOME}/.bash_settings"
+source_if_exists "$HOME/.bash_aliases"
+source_if_exists "$HOME/.bash_functions"
+source_if_exists "$HOME/.bash_settings"
+source_if_exists "$HOME/.binrc"
 
 if [ -f $HOME/.tmux.config ]; then
+    echo "tmux sourcing"
     tmux source $HOME/.tmux.config
 fi

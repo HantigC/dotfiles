@@ -11,6 +11,30 @@ function install_telescope_dep(){
     sudo apt-get install ripgrep fd-find
 }
 
+function install_python_from_source_deps(){
+    sudo apt-get update
+    sudo apt-get install -y \
+        make \
+        build-essential \
+        libssl-dev \
+        zlib1g-dev \
+        libbz2-dev \
+        libreadline-dev \
+        libsqlite3-dev \
+        wget \
+        curl \
+        llvm \
+        libncurses5-dev \
+        libncursesw5-dev \
+        xz-utils \
+        tk-dev
+    }
+
+function download_python(){
+    PYTHON_VERSION=${1:-3.7.16}
+    wget "https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz"
+}
+
 function install_pyenv(){
     sudo apt-get install -y \
         make \
