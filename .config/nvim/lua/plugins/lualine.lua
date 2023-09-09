@@ -4,7 +4,7 @@ require("utils").safe_import(
     lualine.setup {
       options = {
         icons_enabled = true,
-        theme = 'onedark',
+        theme = 'sonokai',
         section_separators = {'', ''},
         component_separators = {'', ''},
         disabled_filetypes = {}
