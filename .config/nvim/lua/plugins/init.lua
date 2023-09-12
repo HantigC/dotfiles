@@ -22,6 +22,7 @@ return require('packer').startup(function()
   use { 'marko-cerovac/material.nvim' }
   use { "lunarvim/darkplus.nvim" }
   use { 'projekt0n/github-nvim-theme', tag = 'v0.0.7' }
+use { "catppuccin/nvim", as = "catppuccin" }
   -- ############ Fuzzy finder #############
   use {
       'nvim-telescope/telescope.nvim',
@@ -39,9 +40,24 @@ return require('packer').startup(function()
   use { 'hrsh7th/cmp-cmdline' }
 
   -- ###### Snippets ###########
-  use { 'dcampos/nvim-snippy' }
-  use { 'honza/vim-snippets' }
-  use { 'dcampos/cmp-snippy' }
+  -- use { 'dcampos/nvim-snippy' }
+  -- use { 'honza/vim-snippets' }
+  -- use { 'dcampos/cmp-snippy' }
+
+  use {'saadparwaiz1/cmp_luasnip'}
+  use { 'rafamadriz/friendly-snippets' }
+  use {
+  	"L3MON4D3/LuaSnip",
+  	-- follow latest release.
+  	tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+  	-- install jsregexp (optional!:).
+  	run = "make install_jsregexp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+  }
+  use {
+  	"windwp/nvim-autopairs",
+      config = function() require("nvim-autopairs").setup {} end
+  }
 
   -- ##### Git ################
   use { 'tpope/vim-fugitive' }
