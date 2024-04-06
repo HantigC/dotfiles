@@ -1,0 +1,268 @@
+{
+  "editor.lineNumbers": "relative",
+  "workbench.iconTheme": "eq-material-theme-icons-palenight",
+  "workbench.activityBar.location": "hidden",
+  "workbench.sideBar.location": "left",
+  "editor.minimap.enabled": false,
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.renderWhitespace": "none", // removes whitespace chars
+  "editor.renderLineHighlight": "none", // removes line highlight
+  "editor.hideCursorInOverviewRuler": true, // hides cursor mark in the overview ruler
+  "editor.folding": true, // removes the folding feature
+  "editor.occurrencesHighlight": "off", // removes highlights occurrences (still works when you select a word)
+  "editor.matchBrackets": "near", // removes the highlight of matching brackets (I use Subtle Match Brackets extension for this)
+  //"editor.glyphMargin": false, // removes the space used mainly for debugging indicators
+  "workbench.editor.showIcons": false, // removes icon from opened files in tabs
+  "editor.overviewRulerBorder": false,
+  "editor.fontFamily": "Fira Code Retina",
+  "editor.fontLigatures": true,
+  "editor.guides.highlightActiveIndentation": false,
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.statusBar.visible": true,
+  "workbench.panel.defaultLocation": "right",
+  "explorer.decorations.colors": false,
+  "editor.bracketPairColorization.enabled": false,
+  "editor.guides.indentation": false,
+  "editor.cursorBlinking": "expand",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.showFoldingControls": "never",
+  "explorer.openEditors.visible": 1,
+  "workbench.layoutControl.type": "menu",
+  "breadcrumbs.enabled": false,
+  "window.commandCenter": false,
+  "window.title": "",
+  "editor.scrollbar.verticalScrollbarSize": 0,
+  "editor.smoothScrolling": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.leader": "<space>",
+  "notebook.stickyScroll.enabled": false,
+  "notebook.cellFocusIndicator": "gutter",
+  "notebook.compactView": false,
+  "notebook.cellToolbarVisibility": "hover",
+  "notebook.breadcrumbs.showCodeCells": false,
+  "notebook.cellToolbarLocation": {
+    "default": "hidden"
+  },
+  "editor.scrollBeyondLastLine": false,
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vscode_custom_css.imports": [
+    "file:///C:/Users/AVDE721/Documents/custom.css",
+    "file:///C:/Users/AVDE721/Documents/index.js",
+    "file:///c:/Users/AVDE721/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.1/dist/updateHandler.js"
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "after": [
+        "d",
+        "d"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ],
+    },
+    {
+      "before": [
+        "<leader>",
+        "b",
+        "f"
+      ],
+      "commands": [
+        "editor.action.formatDocument"
+      ],
+    },
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.showAllSymbols"
+      ],
+    },
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "z"
+      ],
+      "commands": [
+        "workbench.view.search"
+      ],
+    },
+    {
+      "before": [
+        "<leader>",
+        "<space>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        "z",
+        "c"
+      ],
+      "commands": [
+        "editor.fold"
+      ]
+    },
+    {
+      "before": [
+        "z",
+        "a"
+      ],
+      "commands": [
+        "editor.foldAll"
+      ]
+    },
+    {
+      "before": [
+        "z",
+        "A"
+      ],
+      "commands": [
+        "editor.unfoldAll"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.closeEditorsInGroup"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.nextInFiles"
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.prevInFiles"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "r",
+        "k"
+      ],
+      "commands": [
+        "jupyter.restartkernel"
+      ]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-p>": false,
+    "<C-b>": false,
+    "<C-k>": false
+  },
+  "editor.cursorSurroundingLines": 10,
+  "notebook.lineNumbers": "on",
+  "notebook.output.textLineLimit": 1000,
+  "notebook.output.scrolling": true,
+  "workbench.colorTheme": "GitHub Dark Default",
+  "jupyter.askForKernelRestart": false,
+  "markdown-preview-enhanced.codeBlockTheme": "atom-light.css",
+  "markdown-preview-enhanced.previewTheme": "monokai.css",
+  "workbench.editor.showTabs": "none",
+  "cSpell.userWords": [
+    "arange",
+    "arccos",
+    "argmax",
+    "argmin",
+    "astype",
+    "calib",
+    "colmap",
+    "dtype",
+    "GAUSSIANS",
+    "imshow",
+    "keepdims",
+    "Keypoints",
+    "linalg",
+    "maxs",
+    "mgrid",
+    "mius",
+    "mmcv",
+    "ndarray",
+    "ndim",
+    "nticks",
+    "orthogonalize",
+    "plotlyx",
+    "pycolmap",
+    "showlegend",
+    "sobel",
+    "tqdm",
+    "tracklet",
+    "varrs",
+    "varss",
+    "verts",
+    "voxel",
+    "voxelization",
+    "voxels",
+    "Waymo",
+    "xaxis",
+    "xpixel",
+    "yaxis",
+    "ypixel",
+    "zaxis"
+  ],
+  "git.openRepositoryInParentFolders": "never",
+  "remote.SSH.remotePlatform": {
+    "dgx": "linux",
+    "bipc353": "linux"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "files.associations": {
+    "*.cu": "cpp",
+    "*.cuh": "cpp"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "clangd.detectExtensionConflicts": false,
+  "remote.autoForwardPortsSource": "hybrid",
+  "window.menuBarVisibility": "compact"
+}

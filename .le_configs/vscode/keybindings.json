@@ -1,0 +1,142 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "editor.action.smartSelect.expand",
+    },
+    {
+        "key": "ctrl+shift+space",
+        "command": "editor.action.smartSelect.shrink",
+    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "workbench.action.terminal.focus",
+    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+shift+a",
+        "command": "explorer.newFile",
+        "when": "explorerViewletFocus"
+    },
+    {
+        "key": "alt+shift+f",
+        "command": "explorer.newFolder",
+        "when": "explorerViewletFocus"
+    },
+    {
+        "key": "alt+ctrl+d",
+        "command": "deleteFile",
+        "when": "explorerViewletFocus"
+    },
+    {
+        "key": "ctrl+shift+b",
+        "command": "workbench.action.toggleSidebarVisibility",
+    },
+    {
+        "key": "ctrl+b",
+        "command": "editor.debug.action.toggleBreakpoint",
+    },
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.debug.stepOver",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "workbench.action.debug.continue",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "workbench.action.debug.stepInto",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "ctrl+o",
+        "command": "workbench.action.debug.stepOut",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "ctrl+t ctrl+t",
+        "command": "terminal.focus",
+    },
+    {
+        "key": "ctrl+p ctrl+p",
+        "command": "workbench.action.togglePanel"
+    },
+    {
+        "key": "ctrl+p ctrl+m",
+        "command": "workbench.action.toggleMaximizedPanel",
+    },
+    {
+        "key": "ctrl+p ctrl+c",
+        "command": "workbench.action.closePanel",
+    },
+    {
+        "key": "ctrl+p ctrl+r",
+        "command": "workbench.action.positionPanelRight",
+    },
+    {
+        "key": "ctrl+p ctrl+b",
+        "command": "workbench.action.positionPanelBottom",
+    },
+    {
+        "key": "ctrl+k ctrl+i",
+        "command": "notebook.cell.cancelExecution",
+    },
+    {
+        "key": "ctrl+k ctrl+o",
+        "command": "notebook.cell.toggleOutputs",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+k ctrl+c",
+        "command": "notebook.cell.clearOutputs",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+k ctrl+q",
+        "command": "notebook.clearAllCellsOutputs",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+e ctrl+f",
+        "command": "explorer.newFile",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+e ctrl+o",
+        "command": "workbench.action.quickOpen",
+    },
+    {
+        "key": "ctrl+e ctrl+e",
+        "command": "workbench.action.focusActiveEditorGroup",
+    },
+    {
+        "key": "ctrl+e ctrl+d",
+        "command": "explorer.newFolder",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+k ctrl+r",
+        "command": "jupyter.restartkernel",
+    },
+    {
+        "key": "ctrl+e ctrl+r",
+        "command": "editor.action.rename",
+    }
+]
