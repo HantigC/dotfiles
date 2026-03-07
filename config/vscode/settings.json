@@ -404,4 +404,6 @@
   "sonarlint.automaticAnalysis": true,
   "python.analysis.generateWithTypeAnnotation": true,
   "terminal.integrated.fontFamily": "monospace",
+  "claudeCode.preferredLocation": "panel",
+  "claudeCode.useTerminal": true,
 }
