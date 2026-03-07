@@ -28,6 +28,7 @@ rust-lang.rust-analyzer
 searking.preview-vscode
 shd101wyy.markdown-preview-enhanced
 streetsidesoftware.code-spell-checker
+tal7aouy.theme
 tamasfe.even-better-toml
 trond-snekvik.simple-rst
 twxs.cmake

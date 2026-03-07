@@ -1,3 +1,4 @@
+set -x
 platform=$(uname -s 2>/dev/null || echo "$OS")
 
 case "$platform" in
@@ -16,8 +17,7 @@ case "$platform" in
         ;;
 esac
 
-local_dir=$(dirname "$0")
-echo "Platform: ${platform}, Location dir:${vscode_dir}"
+local_dir="$(pwd)/$(dirname "$0")" 
 echo "Linking settings for vscode..."
 ln -s "${local_dir}/settings.json" "${vscode_dir}/settings.json"
 

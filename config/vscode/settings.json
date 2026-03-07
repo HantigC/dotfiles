@@ -9,10 +9,10 @@
   "editor.renderLineHighlight": "none", // removes line highlight
   "editor.hideCursorInOverviewRuler": true, // hides cursor mark in the overview ruler
   "editor.folding": true, // removes the folding feature
-  "editor.occurrencesHighlight": "off", // removes highlights occurrences (still works when you select a word)
+  // "editor.occurrencesHighlight": "off", // removes highlights occurrences (still works when you select a word)
   "editor.matchBrackets": "near", // removes the highlight of matching brackets (I use Subtle Match Brackets extension for this)
   //"editor.glyphMargin": false, // removes the space used mainly for debugging indicators
-  "workbench.editor.showIcons": false, // removes icon from opened files in tabs
+  "workbench.editor.showIcons": true, // removes icon from opened files in tabs
   "editor.overviewRulerBorder": false,
   "editor.fontFamily": "Fira Code Retina",
   "hlsl.suggest.basic": true,
@@ -20,8 +20,8 @@
   "workbench.tree.renderIndentGuides": "none",
   "workbench.statusBar.visible": true,
   "workbench.panel.defaultLocation": "right",
-  "explorer.decorations.colors": false,
-  "editor.bracketPairColorization.enabled": false,
+  "explorer.decorations.colors": true,
+  "editor.bracketPairColorization.enabled": true,
   "editor.guides.indentation": false,
   "editor.cursorBlinking": "expand",
   "editor.cursorSmoothCaretAnimation": "on",
@@ -39,7 +39,7 @@
   "vim.leader": "<space>",
   "notebook.stickyScroll.enabled": false,
   "notebook.cellFocusIndicator": "gutter",
-  "notebook.compactView": false,
+  "notebook.compactView": true,
   "notebook.cellToolbarVisibility": "hover",
   "notebook.breadcrumbs.showCodeCells": false,
   "notebook.cellToolbarLocation": {
@@ -124,11 +124,10 @@
   "notebook.lineNumbers": "on",
   "notebook.output.textLineLimit": 1000,
   "notebook.output.scrolling": true,
-  "workbench.colorTheme": "Gruvbox Dark Hard",
   "jupyter.askForKernelRestart": false,
   "markdown-preview-enhanced.codeBlockTheme": "auto.css",
   "markdown-preview-enhanced.previewTheme": "monokai.css",
-  "workbench.editor.showTabs": "none",
+  "workbench.editor.showTabs": "single",
   "cSpell.userWords": [
     "AABB",
     "achat",
@@ -327,12 +326,6 @@
     "zaxis"
   ],
   "git.openRepositoryInParentFolders": "never",
-  "remote.SSH.remotePlatform": {
-    "dgx": "linux",
-    "bipc353": "linux",
-    "bipc354": "linux",
-    "debipeswm01": "linux"
-  },
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
@@ -406,4 +399,6 @@
   "terminal.integrated.fontFamily": "monospace",
   "claudeCode.preferredLocation": "panel",
   "claudeCode.useTerminal": true,
+  "workbench.colorTheme": "Theme Darker",
+  "diffEditor.ignoreTrimWhitespace": false,
 }
