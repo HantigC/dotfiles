@@ -51,68 +51,147 @@
   },
   "vim.insertModeKeyBindings": [
     {
-      "before": ["j", "k"],
-      "after": ["<Esc>"]
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "/"],
+      "before": [
+        "<leader>",
+        "/"
+      ],
       "after": "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>"
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "d"],
-      "after": ["d", "d"]
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "after": [
+        "d",
+        "d"
+      ]
     },
     {
-      "before": ["<leader>", "f", "f"],
-      "commands": ["workbench.action.quickOpen"]
+      "before": [
+        "<leader>",
+        "f",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
     },
     {
-      "before": ["<leader>", "b", "f"],
-      "commands": ["editor.action.formatDocument"]
+      "before": [
+        "<leader>",
+        "b",
+        "f"
+      ],
+      "commands": [
+        "editor.action.formatDocument"
+      ]
     },
     {
-      "before": ["<leader>", "f", "s"],
-      "commands": ["workbench.action.showAllSymbols"]
+      "before": [
+        "<leader>",
+        "f",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.showAllSymbols"
+      ]
     },
     {
-      "before": ["<leader>", "f", "z"],
-      "commands": ["workbench.view.search"]
+      "before": [
+        "<leader>",
+        "f",
+        "z"
+      ],
+      "commands": [
+        "workbench.view.search"
+      ]
     },
     {
-      "before": ["<leader>", "<space>"],
-      "commands": [":nohl"]
+      "before": [
+        "<leader>",
+        "<space>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
     },
     {
-      "before": ["z", "c"],
-      "commands": ["editor.fold"]
+      "before": [
+        "z",
+        "c"
+      ],
+      "commands": [
+        "editor.fold"
+      ]
     },
     {
-      "before": ["z", "a"],
-      "commands": ["editor.foldAll"]
+      "before": [
+        "z",
+        "a"
+      ],
+      "commands": [
+        "editor.foldAll"
+      ]
     },
     {
-      "before": ["z", "A"],
-      "commands": ["editor.unfoldAll"]
+      "before": [
+        "z",
+        "A"
+      ],
+      "commands": [
+        "editor.unfoldAll"
+      ]
     },
     {
-      "before": ["<leader>", "q"],
-      "commands": ["workbench.action.closeEditorsInGroup"]
+      "before": [
+        "<leader>",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.closeEditorsInGroup"
+      ]
     },
     {
-      "before": ["]", "d"],
-      "commands": ["editor.action.marker.nextInFiles"]
+      "before": [
+        "]",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.nextInFiles"
+      ]
     },
     {
-      "before": ["[", "d"],
-      "commands": ["editor.action.marker.prevInFiles"]
+      "before": [
+        "[",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.prevInFiles"
+      ]
     },
     {
-      "before": ["<leader>", "r", "k"],
-      "commands": ["jupyter.restartkernel"]
+      "before": [
+        "<leader>",
+        "r",
+        "k"
+      ],
+      "commands": [
+        "jupyter.restartkernel"
+      ]
     }
   ],
   "vim.handleKeys": {
@@ -255,6 +334,7 @@
     "pyproject",
     "qlah",
     "RANSAC",
+    "rects",
     "refresolver",
     "reproject",
     "reprojection",
@@ -339,9 +419,13 @@
   "clangd.detectExtensionConflicts": false,
   "remote.autoForwardPortsSource": "hybrid",
   "window.menuBarVisibility": "compact",
-  "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],
+  "jupyter.widgetScriptSources": [
+    "jsdelivr.com",
+    "unpkg.com"
+  ],
   "workbench.editorAssociations": {
-    "*.db": "sqlite-viewer.option"
+    "*.db": "sqlite-viewer.option",
+    "*.pdf": "default"
   },
   "sqliteViewer.maxFileSize": 2000,
   "explorer.fileNesting.patterns": {
@@ -376,7 +460,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -398,7 +482,13 @@
   "python.analysis.generateWithTypeAnnotation": true,
   "terminal.integrated.fontFamily": "monospace",
   "claudeCode.preferredLocation": "panel",
-  "claudeCode.useTerminal": true,
   "workbench.colorTheme": "Theme Darker",
   "diffEditor.ignoreTrimWhitespace": false,
+  "rust-analyzer.inlayHints.typeHints.enable": true,
+  "rust-analyzer.inlayHints.parameterHints.enable": true,
+  "rust-analyzer.inlayHints.chainingHints.enable": true,
+  "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "always",
+  "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "always",
+  // "rust-analyzer.inlayHints.expressionAdjustmentHints.enable": "always",
+  "editor.inlayHints.enabled": "on"
 }
