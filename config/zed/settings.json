@@ -92,6 +92,7 @@
   "agent_servers": {
     "opencode": {
       "type": "custom",
+      // TODO: change this
       "command": "/Users/alexandrubodea/dev/open-code-setup/opencode-acp",
       "args": [],
       "env": {},

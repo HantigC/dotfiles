@@ -1,10 +1,21 @@
-.PHONY: setup_bash setup_vscode setup_ipython setup_zed
+# List of configs to install when running `make setup` / `make install`.
+# Each name here must have a matching config/<name>/setup.sh script, and
+# becomes installable on its own as `make <name>` (e.g. `make zed`).
+# Comment out or remove an entry to skip it.
+CONFIGS := \
+	vscode \
+	ipython \
+	zed
 
-setup_vscode:
-	bash config/vscode/setup.sh
+.PHONY: setup install list $(CONFIGS)
 
-setup_ipython:
-	bash config/ipython/setup.sh
+# Install every config listed in CONFIGS.
+setup install: $(CONFIGS)
 
-setup_zed:
-	bash config/zed/setup.sh
+# Print which configs `make setup` would install.
+list:
+	@echo "$(CONFIGS)" | tr ' ' '\n'
+
+# Install a single config, e.g. `make zed`.
+$(CONFIGS):
+	bash config/$@/setup.sh
