@@ -1,68 +1,743 @@
 {
-  // Analog of vscode "Theme Darker" (a VS Code-only extension theme) — swap
-  // for any installed theme, e.g. "One Dark", "Gruvbox Dark", "Catppuccin Mocha".
-  "theme": "One Dark",
-
+  "cli_default_open_behavior": "new_window",
   "vim_mode": true,
-  "cursor_blink": true,
-  "cursor_shape": "bar",
   "relative_line_numbers": "enabled",
+  "agent": {
+    "enabled": true,
+    "button": true,
 
-  "buffer_font_family": "Fira Code",
-  "buffer_font_size": 14,
-  "buffer_font_features": {
-    "calt": true // ligatures
-  },
+    // Layout — unchanged from your current setup:
+    // agent panel in the bottom dock (shares it with the terminal),
+    // thread-switcher sidebar on the left edge of the panel.
+    "dock": "bottom",
+    "sidebar_side": "left",
+    "default_height": 480,
+    "limit_content_width": true,
+    "max_content_width": 900,
 
-  "minimap": {
-    "show": "never"
-  },
-  "scrollbar": {
-    "show": "never"
-  },
-  "indent_guides": {
-    "enabled": false
-  },
-  "tab_bar": {
-    "show": true
-  },
-  "soft_wrap": "none",
-  "scroll_beyond_last_line": "off",
-  "cursor_surrounding_lines": 10,
-
-  // Extensions to install automatically on launch (replaces vscode's
-  // `code --install-extension` loop; language servers for python/rust/cpp
-  // are handled natively by Zed and don't need an extension entry here).
-  "auto_install_extensions": {
-    "toml": true,
-    "latex": true,
-    "sql": true,
-    "rst": true,
-    "neocmake": true
-  },
-
-  "languages": {
-    "Python": {
-      "tab_size": 4,
-      "formatter": {
-        "language_server": {
-          "name": "ruff"
-        }
+    // Replaces the removed `always_allow_tool_actions` boolean (Zed >= 0.224 / 1.x).
+    // Precedence: built-in rules > always_deny > always_confirm > always_allow > per-tool default > global default.
+    "tool_permissions": {
+      "default": "allow",
+      "tools": {
+        "terminal": {
+          "default": "allow",
+          "always_confirm": [
+            { "pattern": "\\bsudo\\b" },
+            { "pattern": "\\brm\\s+-[a-zA-Z]*r" },
+            { "pattern": "git\\s+push\\b.*\\s(--force|-f)\\b" },
+            { "pattern": "git\\s+reset\\s+--hard" },
+            { "pattern": "git\\s+clean\\s+-[a-zA-Z]*f" },
+            { "pattern": "\\bterraform\\s+(apply|destroy)\\b" },
+            { "pattern": "\\b(npm|pnpm|yarn)\\s+publish\\b" },
+            { "pattern": "\\bdotnet\\s+nuget\\s+push\\b" },
+            { "pattern": "\\bdotnet\\s+ef\\s+database\\s+(drop|update)\\b" },
+            { "pattern": "\\bmvn\\b.*\\b(deploy|release:)" },
+            { "pattern": "\\b(gradlew|gradle)\\b.*\\b(publish|release)" },
+            { "pattern": "\\bdocker\\s+(system\\s+prune|volume\\s+rm)\\b" },
+            { "pattern": "\\|\\s*(sh|bash)\\b" },
+          ],
+        },
+        "edit_file": {
+          "always_deny": [
+            { "pattern": "\\.env($|\\.|/)" },
+            { "pattern": "\\.(pem|key|crt|cert|p12|pfx)$" },
+            { "pattern": "(^|/)secrets?(/|\\.)" },
+            { "pattern": "\\.dev\\.vars$" },
+            { "pattern": "\\.tfstate" },
+            { "pattern": "(^|/)\\.ssh/" },
+          ],
+        },
+        "write_file": {
+          "always_deny": [
+            { "pattern": "\\.env($|\\.|/)" },
+            { "pattern": "\\.(pem|key|crt|cert|p12|pfx)$" },
+            { "pattern": "(^|/)secrets?(/|\\.)" },
+            { "pattern": "\\.dev\\.vars$" },
+            { "pattern": "\\.tfstate" },
+            { "pattern": "(^|/)\\.ssh/" },
+          ],
+        },
+        "delete_path": {
+          "default": "confirm",
+          "always_deny": [{ "pattern": "(^|/)\\.git(/|$)" }],
+        },
+        "move_path": {
+          "default": "confirm",
+        },
       },
-      "format_on_save": "on"
     },
-    "Shell Script": {
-      "formatter": "language_server",
-      "format_on_save": "on"
+
+    "auto_compact": {
+      "enabled": true,
+      "threshold": "90%",
     },
-    "Rust": {
-      "format_on_save": "on"
-    }
+
+    "notify_when_agent_waiting": "primary_screen",
+    "play_sound_when_agent_done": "when_hidden",
+    "show_turn_stats": true,
+    "expand_terminal_card": false,
+    "default_profile": "write",
   },
 
+  // opencode as a native ACP agent, so it runs in the Agent Panel rather than
+  // only in a terminal — same threads sidebar, same notify_when_agent_waiting
+  // and play_sound_when_agent_done above.
+  //
+  // Points at a wrapper rather than the binary because Zed spawns agents
+  // directly, not through a login shell: nothing from ~/.zshrc applies, so the
+  // wrapper re-applies OPENCODE_DISABLE_CLAUDE_CODE_SKILLS, syncs this repo's
+  // .opencode/opencode.json, and passes an absolute project skills path.
+  // Open with `agent: new thread` in the Command Palette.
+  "agent_servers": {
+    "opencode": {
+      "type": "custom",
+      "command": "/Users/alexandrubodea/dev/open-code-setup/opencode-acp",
+      "args": [],
+      "env": {},
+    },
+  },
+
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha",
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha",
+  },
+  "ui_font_family": ".SystemUIFont",
+  "ui_font_size": 10,
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 10,
+  "buffer_font_weight": 200,
+  "buffer_line_height": "comfortable",
+  "buffer_font_features": {
+    "calt": true,
+    "liga": true,
+  },
+  "tab_size": 2,
+  "soft_wrap": "none",
+  "format_on_save": "off",
+  "autosave": "on_focus_change",
+  "show_whitespaces": "selection",
+  "vertical_scroll_margin": 10,
+  "scroll_sensitivity": 5,
+  "cursor_blink": false,
+  "restore_on_startup": "last_session",
+  "show_wrap_guides": false,
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware",
+  },
   "git": {
     "inline_blame": {
-      "enabled": false
-    }
-  }
+      "enabled": true,
+      "delay_ms": 600,
+      "show_commit_summary": true,
+    },
+    // Zed ships "../worktrees", which would have made a third worktree root.
+    // This matches what Claude Code already creates (8 live across 5 repos) and
+    // what lola-e2e's `make use` help text points at. Already gitignored.
+    // Ezra's sibling <repo>-worktrees/ dirs are left as they are.
+    "worktree_directory": ".claude/worktrees",
+  },
+  "formatter": "auto",
+  "prettier": {
+    "allowed": true,
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "quoteProps": "as-needed",
+    "jsxSingleQuote": false,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "proseWrap": "preserve",
+    "htmlWhitespaceSensitivity": "css",
+    "endOfLine": "lf",
+    "overrides": [
+      {
+        "files": ["*.json"],
+        "options": {
+          "singleQuote": false,
+        },
+      },
+    ],
+  },
+  "tab_bar": {
+    "show": false,
+    "show_nav_history_buttons": true,
+    // Ships false. Pinned tabs get their own top row, so a pinned plan.md or
+    // CLAUDE.md stays put while the working tabs churn beneath it.
+    "show_pinned_tabs_in_separate_row": true,
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+    "show_diagnostics": "errors",
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": true,
+  },
+  "scrollbar": {
+    "show": "auto",
+  },
+  "gutter": {
+    "folds": true,
+    "line_numbers": true,
+    "runnables": true,
+    "breakpoints": true,
+  },
+  "project_panel": {
+    "bold_folder_labels": false,
+    "dock": "left",
+    "default_width": 240,
+    "indent_size": 16,
+    "git_status": true,
+    // Ships false. Error/warning counts next to file names — worth having when
+    // an agent has just touched a dozen files.
+    "diagnostic_badges": true,
+  },
+  "outline_panel": {
+    "dock": "right",
+  },
+  "git_panel": {
+    "dock": "right",
+    // Ships false. Hierarchical view of changed files; agent edits routinely
+    // span directories, where a flat list stops being readable.
+    "tree_view": true,
+    // Ships false. Uncommitted-change count on the panel icon — the at-a-glance
+    // answer to "did that run actually change anything?".
+    "show_count_badge": true,
+    // Ships 0 (off). Warn past the conventional git subject limit.
+    "commit_title_max_length": 72,
+  },
+  // Ships "never". The small whole-file map beside the scrollbar. "auto" ties it
+  // to scrollbar visibility, matching the "scrollbar" block above.
+  "minimap": {
+    "max_width_columns": 90,
+    "thumb": "always",
+    "show": "never",
+  },
+  "collaboration_panel": {
+    "dock": "right",
+    "button": false,
+  },
+  "file_finder": {
+    "modal_max_width": "medium",
+    "file_icons": true,
+    "include_ignored": "all",
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/node_modules",
+    "**/.nuxt",
+    "**/.next",
+    "**/.output",
+    "**/dist",
+    "**/out",
+    "**/build",
+    "**/.turbo",
+    "**/.vscode",
+    "**/.idea",
+    "**/__pycache__",
+    "**/.pytest_cache",
+    "**/.venv",
+    "**/venv",
+    "**/.mypy_cache",
+    "**/.ruff_cache",
+    "**/coverage",
+    "**/.nyc_output",
+    "**/*.egg-info",
+    "**/vendor",
+    "**/.terraform",
+    "**/*.tfstate*",
+    "**/bin",
+    "**/obj",
+    "**/target",
+    "**/.gradle",
+    "**/TestResults",
+  ],
+  "inlay_hints": {
+    "enabled": true,
+    "scroll_debounce_ms": 150,
+  },
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font",
+    "font_size": 10,
+    "font_weight": 400,
+    "font_features": {
+      "liga": true,
+      "calt": true,
+    },
+    // Tighter than "comfortable" (1.618) — box-drawing TUIs like Claude Code
+    // and lazygit render with unbroken borders at "standard".
+    "line_height": "standard",
+    "max_scroll_history_lines": 100000,
+    // Now an APCA contrast score (0-100), not a ratio. 0 = no adjustment,
+    // 45 = Zed's default and the floor for legibility on colourful themes.
+    "minimum_contrast": 45,
+    "copy_on_select": false,
+    "option_as_meta": true,
+    "working_directory": "current_project_directory",
+    "env": {
+      "EDITOR": "zed --wait",
+    },
+    "detect_venv": {
+      "on": {
+        "directories": [".venv", "venv", ".env", "env"],
+        "activate_script": "default",
+      },
+    },
+    // Ships "off". Pairs with Claude Code's preferredNotifChannel: "terminal_bell"
+    // to give a completion signal Zed's terminal otherwise has no way to deliver.
+    "bell": "system",
+    // Ships false. Which of the open terminals are still running something.
+    "show_count_badge": true,
+  },
+  "edit_predictions": {
+    "provider": "copilot",
+    // Merged with Zed's built-in list, which already covers .env*, *.pem,
+    // *.key, *.cert, *.crt, .dev.vars, secrets.yml and Zed's own config files.
+    "disabled_globs": ["**/secrets.yaml"],
+  },
+  "auto_install_extensions": {
+    "catppuccin": true,
+    "catppuccin-icons": true,
+    "vue": true,
+    "ruff": true,
+    "html": true,
+    "toml": true,
+    "dockerfile": true,
+    "sql": true,
+    "graphql": true,
+    "log": true,
+    "xml": true,
+    "yaml": true,
+    "stylelint": true,
+    "scss": true,
+    "terraform": true,
+    "prisma": true,
+    "emmet": true,
+    "csharp": true,
+    "fsharp": true,
+    "java": true,
+    // Added for parity with the old VS Code setup (latex-workshop,
+    // simple-rst/restructuredtext, cmake-tools/cmake).
+    "latex": true,
+    "rst": true,
+    "neocmake": true,
+  },
+  "lsp": {
+    "eslint": {
+      "settings": {
+        "codeActionOnSave": {
+          "enable": true,
+          "mode": "all",
+        },
+        "problems": {
+          "shortenToSingleLine": true,
+        },
+      },
+    },
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "inlayHints": {
+            "parameterNames": { "enabled": "literals" },
+            "parameterTypes": { "enabled": true },
+            "variableTypes": { "enabled": false },
+            "propertyDeclarationTypes": { "enabled": true },
+            "functionLikeReturnTypes": { "enabled": true },
+            "enumMemberValues": { "enabled": true },
+          },
+          "preferences": {
+            "importModuleSpecifier": "relative",
+          },
+          "tsserver": {
+            "maxTsServerMemory": 8192,
+          },
+        },
+        "javascript": {
+          "inlayHints": {
+            "parameterNames": { "enabled": "literals" },
+            "parameterTypes": { "enabled": true },
+            "variableTypes": { "enabled": false },
+            "propertyDeclarationTypes": { "enabled": true },
+            "functionLikeReturnTypes": { "enabled": true },
+            "enumMemberValues": { "enabled": true },
+          },
+        },
+      },
+    },
+    "vue-language-server": {
+      "settings": {
+        "vue.inlayHints.inlineHandlerLeading": true,
+        "vue.inlayHints.missingProps": true,
+        "vue.inlayHints.optionsWrapper": true,
+        "vue.inlayHints.vBindShorthand": true,
+      },
+    },
+    "gopls": {
+      "initialization_options": {
+        "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true,
+        },
+      },
+    },
+    "terraform-ls": {
+      "initialization_options": {
+        "experimentalFeatures": {
+          "prefillRequiredFields": true,
+        },
+      },
+    },
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          "configurationPreference": "filesystemFirst",
+          "lineLength": 120,
+        },
+      },
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "classAttributes": ["class", "className", "ngClass", "styles"],
+      },
+    },
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "format": {
+            "enable": true,
+            "singleQuote": true,
+          },
+          "schemaStore": {
+            "enable": true,
+          },
+        },
+      },
+    },
+    // C# — Roslyn is the default server for the `csharp` extension; csharp-ls
+    // and omnisharp are disabled by Zed's own defaults, so no override needed.
+    "roslyn": {
+      "settings": {
+        // fullSolution gives Rider-like project-wide diagnostics. Drop either
+        // scope back to "openFiles" if a large solution eats too much RAM/CPU.
+        "csharp|background_analysis": {
+          "dotnet_analyzer_diagnostics_scope": "fullSolution",
+          "dotnet_compiler_diagnostics_scope": "fullSolution",
+        },
+        "csharp|code_lens": {
+          "dotnet_enable_references_code_lens": true,
+          "dotnet_enable_tests_code_lens": true,
+        },
+        "csharp|formatting": {
+          "dotnet_organize_imports_on_format": true,
+        },
+        "csharp|code_style.formatting.indentation_and_spacing": {
+          "tab_width": 4,
+          "indent_size": 4,
+          "indent_style": "space",
+        },
+        "csharp|code_style.formatting.new_line": {
+          "insert_final_newline": true,
+        },
+        "csharp|projects": {
+          "dotnet_enable_automatic_restore": true,
+        },
+        "csharp|navigation": {
+          "dotnet_navigate_to_decompiled_sources": true,
+          "dotnet_navigate_to_source_link_and_embedded_sources": true,
+        },
+        "csharp|completion": {
+          "dotnet_show_completion_items_from_unimported_namespaces": true,
+          "dotnet_trigger_completion_in_argument_lists": true,
+        },
+        "csharp|inlay_hints": {
+          "dotnet_enable_inlay_hints_for_parameters": true,
+          "dotnet_enable_inlay_hints_for_other_parameters": true,
+          "dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name": true,
+          "dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent": true,
+          "csharp_enable_inlay_hints_for_types": true,
+          "csharp_enable_inlay_hints_for_implicit_variable_types": true,
+          "csharp_enable_inlay_hints_for_lambda_parameter_types": true,
+        },
+      },
+    },
+    // Java — JDTLS auto-downloads but needs JDK 21+ on $PATH or $JAVA_HOME.
+    // Uncomment java_home to pin a specific JDK for running the server itself.
+    "jdtls": {
+      "settings": {
+        // "java_home": "/path/to/jdk-21",
+        "lombok_support": true,
+        "initialization_options": {
+          "settings": {
+            "java": {
+              "format": { "enabled": true },
+              "saveActions": { "organizeImports": true },
+              "import": {
+                "gradle": { "enabled": true },
+                "maven": { "enabled": true },
+                "exclusions": ["**/node_modules/**", "**/.metadata/**", "**/target/**", "**/build/**"],
+              },
+              "completion": {
+                "importOrder": ["java", "javax", "jakarta", "com", "org"],
+              },
+              "referencesCodeLens": { "enabled": true },
+              "implementationCodeLens": "all",
+              "configuration": { "updateBuildConfiguration": "interactive" },
+            },
+          },
+        },
+      },
+    },
+  },
+  "languages": {
+    "Vue.js": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "auto",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+        "source.organizeImports": true,
+      },
+    },
+    "TypeScript": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "auto",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+        "source.organizeImports": true,
+      },
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": true,
+        "show_other_hints": true,
+        "show_type_hints": true,
+      },
+    },
+    "TSX": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "auto",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+        "source.organizeImports": true,
+      },
+    },
+    "JavaScript": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "auto",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+        "source.organizeImports": true,
+      },
+    },
+    "Go": {
+      "tab_size": 4,
+      "hard_tabs": true,
+      "format_on_save": "on",
+      "formatter": "language_server",
+      "code_actions_on_format": {
+        "source.organizeImports": true,
+      },
+    },
+    "Terraform": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "language_server",
+    },
+    "HCL": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "language_server",
+    },
+    "Python": {
+      "tab_size": 4,
+      "format_on_save": "on",
+      "language_servers": ["basedpyright", "ruff"],
+      "formatter": [
+        {
+          "language_server": {
+            "name": "ruff",
+          },
+        },
+      ],
+      "code_actions_on_format": {
+        "source.organizeImports.ruff": true,
+        "source.fixAll.ruff": true,
+      },
+    },
+    "JSON": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "auto",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+    "JSONC": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "auto",
+    },
+    "HTML": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "auto",
+    },
+    "CSS": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "auto",
+      "code_actions_on_format": {
+        "source.fixAll.stylelint": true,
+      },
+    },
+    "SCSS": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "auto",
+      "code_actions_on_format": {
+        "source.fixAll.stylelint": true,
+      },
+    },
+    "Rust": {
+      "tab_size": 4,
+      "format_on_save": "off",
+      "formatter": "language_server",
+    },
+    "Shell Script": {
+      "tab_size": 2,
+      "format_on_save": "off",
+      "formatter": "auto",
+    },
+    "YAML": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "language_server",
+    },
+    "TOML": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "language_server",
+    },
+    "Markdown": {
+      "format_on_save": "off",
+      "soft_wrap": "preferred_line_length",
+      "preferred_line_length": 100,
+    },
+    "SQL": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "auto",
+    },
+    "GraphQL": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "auto",
+    },
+    "Prisma": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": "language_server",
+    },
+    "Dockerfile": {
+      "tab_size": 4,
+      "format_on_save": "on",
+      "formatter": "auto",
+    },
+    "CSharp": {
+      "tab_size": 4,
+      "format_on_save": "on",
+      "formatter": "language_server",
+      "inlay_hints": {
+        "enabled": true,
+        "show_type_hints": true,
+        "show_parameter_hints": true,
+        "show_other_hints": true,
+      },
+    },
+    "FSharp": {
+      "tab_size": 4,
+      "format_on_save": "on",
+      "formatter": "language_server",
+      "preferred_line_length": 120,
+    },
+    "Java": {
+      "tab_size": 4,
+      "format_on_save": "on",
+      // Explicit, because Zed's defaults enable prettier-plugin-java for Java
+      // and your global "formatter": "auto" would prefer it over JDTLS.
+      "formatter": "language_server",
+      "prettier": {
+        "allowed": false,
+      },
+      "code_actions_on_format": {
+        "source.organizeImports": true,
+      },
+      "inlay_hints": {
+        "enabled": true,
+        "show_type_hints": true,
+        "show_parameter_hints": true,
+        "show_other_hints": true,
+      },
+    },
+    // Added to carry over the old VS Code latex-workshop setup: format via
+    // texlab (Zed's LaTeX language server, installed by the "latex" extension).
+    "LaTeX": {
+      "format_on_save": "on",
+      "formatter": "language_server",
+    },
+    "Diff": {
+      "remove_trailing_whitespace_on_save": false,
+      "ensure_final_newline_on_save": false,
+    },
+  },
+  "file_types": {
+    "Dockerfile": ["Dockerfile", "Dockerfile.*", "*.dockerfile"],
+    "JSON": ["*.code-snippets"],
+    "JSONC": ["tsconfig*.json", ".eslintrc.json", "turbo.json", "keybindings.json", "settings.json"],
+    "Shell Script": [".env.*", ".envrc"],
+    "Terraform": ["*.tf", "*.tfvars"],
+    "XML": [
+      "*.csproj",
+      "*.fsproj",
+      "*.vbproj",
+      "*.props",
+      "*.targets",
+      "*.nuspec",
+      "*.resx",
+      "*.slnx",
+      "*.xaml",
+      "*.axaml",
+    ],
+  },
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false,
+  },
+  "feature_flags": {
+    "notebooks": "on",
+  },
 }

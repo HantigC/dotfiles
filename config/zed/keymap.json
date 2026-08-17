@@ -12,8 +12,8 @@
       "ctrl-e ctrl-r": "editor::Rename",
       "ctrl-g ctrl-b": "git::Blame",
       "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPreviousDiagnostic"
-    }
+      "[ d": "editor::GoToPreviousDiagnostic",
+    },
   },
   {
     "context": "Workspace",
@@ -23,22 +23,22 @@
       "ctrl-k ctrl-v": "pane::SplitRight",
       "ctrl-k ctrl-l": "pane::SplitRight",
       "ctrl-p ctrl-p": "workspace::ToggleBottomDock",
-      "ctrl-shift-t": "terminal_panel::Toggle"
-    }
+      "ctrl-shift-t": "terminal_panel::Toggle",
+    },
   },
   {
     "context": "Pane",
     "bindings": {
-      "ctrl-q": "pane::CloseAllItems"
-    }
+      "ctrl-q": "pane::CloseAllItems",
+    },
   },
   {
     "context": "ProjectPanel",
     "bindings": {
       "alt-shift-a": "project_panel::NewFile",
       "alt-shift-f": "project_panel::NewDirectory",
-      "ctrl-alt-d": ["project_panel::Delete", { "skip_prompt": false }]
-    }
+      "ctrl-alt-d": ["project_panel::Delete", { "skip_prompt": false }],
+    },
   },
   // Vim leader-key mappings (leader = space), mirroring vscode's
   // vim.normalModeKeyBindingsNonRecursive block. Zed's own vim.json already
@@ -56,13 +56,13 @@
       "z a": "editor::FoldAll",
       "z A": "editor::UnfoldAll",
       "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPreviousDiagnostic"
-    }
+      "[ d": "editor::GoToPreviousDiagnostic",
+    },
   },
   {
     "context": "vim_mode == insert",
     "bindings": {
-      "j k": "vim::NormalBefore"
-    }
-  }
+      "j k": "vim::NormalBefore",
+    },
+  },
 ]
