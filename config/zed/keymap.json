@@ -1,0 +1,68 @@
+// Place your key bindings in this file to override the defaults.
+// Analog of config/vscode/keybindings.json, translated to Zed's action names
+// and verified against zed-industries/zed's assets/keymaps/*.json.
+// Bindings tied to VS Code-only extensions (Project Manager, isort, ruff
+// code actions, Jupyter cell toolbar) were dropped rather than faked.
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-space": "editor::SelectLargerSyntaxNode",
+      "ctrl-shift-space": "editor::SelectSmallerSyntaxNode",
+      "ctrl-e ctrl-r": "editor::Rename",
+      "ctrl-g ctrl-b": "git::Blame",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-shift-b": "workspace::ToggleLeftDock",
+      "ctrl-e ctrl-o": "file_finder::Toggle",
+      "ctrl-k ctrl-v": "pane::SplitRight",
+      "ctrl-k ctrl-l": "pane::SplitRight",
+      "ctrl-p ctrl-p": "workspace::ToggleBottomDock",
+      "ctrl-shift-t": "terminal_panel::Toggle"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-q": "pane::CloseAllItems"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "alt-shift-a": "project_panel::NewFile",
+      "alt-shift-f": "project_panel::NewDirectory",
+      "ctrl-alt-d": ["project_panel::Delete", { "skip_prompt": false }]
+    }
+  },
+  // Vim leader-key mappings (leader = space), mirroring vscode's
+  // vim.normalModeKeyBindingsNonRecursive block. Zed's own vim.json already
+  // binds plain "z a"/"z c" etc. differently (ToggleFold, not FoldAll) —
+  // these entries intentionally override them to match vscode muscle memory.
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "space f f": "file_finder::Toggle",
+      "space f s": "outline::Toggle",
+      "space f z": "pane::DeploySearch",
+      "space d": ["workspace::SendKeystrokes", "d d"],
+      "space q": "pane::CloseAllItems",
+      "z c": "editor::Fold",
+      "z a": "editor::FoldAll",
+      "z A": "editor::UnfoldAll",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "j k": "vim::NormalBefore"
+    }
+  }
+]

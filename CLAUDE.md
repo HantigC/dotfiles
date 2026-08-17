@@ -16,7 +16,10 @@ Personal dotfiles repository managed from `~/.config/dotfiles`. Config files are
 - `cofing\vcode\settings.json` - system wide settigs for vscode
 - `cofing\vcode\keybindings.json` - system wide keybindings for vscode
 - `cofing\vcode\extensions.txt` - list of vscode extensions separated by newline
-
+- `cofing\zed` - contains configurations for the Zed editor
+- `cofing\zed\setup.sh` - creates symlinks for settings and keymap (Zed auto-installs extensions from settings.json, so there's no separate install step)
+- `cofing\zed\settings.json` - system wide settings for zed
+- `cofing\zed\keymap.json` - system wide keybindings for zed
 
 
 
