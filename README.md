@@ -8,7 +8,7 @@ into the locations each tool expects.
 - `config/<tool>/` — one directory per tool, holding its config files and a
   `setup.sh` that symlinks them into place (and does any tool-specific setup,
   like installing extensions).
-- `Makefile` — a `setup_<tool>` target per tool, plus a `CONFIGS` list that
+- `Makefile` — a `make <tool>` target per tool, plus a `CONFIGS` list that
   controls which tools `make setup` installs.
 
 Not every `config/<tool>/` directory has a `setup.sh` yet (e.g. `bash`,
@@ -22,8 +22,8 @@ cd ~/.config/dotfiles
 make setup   # or: make install
 ```
 
-This runs every `setup_<tool>` target listed in the `CONFIGS` variable at the
-top of the `Makefile`. See what it will install without doing anything with:
+This runs every tool's target listed in the `CONFIGS` variable at the top of
+the `Makefile`. See what it will install without doing anything with:
 
 ```sh
 make list        # prints the configs that will be installed
