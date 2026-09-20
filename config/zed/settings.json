@@ -5,7 +5,6 @@
   "agent": {
     "enabled": true,
     "button": true,
-
     // Layout — unchanged from your current setup:
     // agent panel in the bottom dock (shares it with the terminal),
     // thread-switcher sidebar on the left edge of the panel.
@@ -14,7 +13,6 @@
     "default_height": 480,
     "limit_content_width": true,
     "max_content_width": 900,
-
     // Replaces the removed `always_allow_tool_actions` boolean (Zed >= 0.224 / 1.x).
     // Precedence: built-in rules > always_deny > always_confirm > always_allow > per-tool default > global default.
     "tool_permissions": {
@@ -23,63 +21,114 @@
         "terminal": {
           "default": "allow",
           "always_confirm": [
-            { "pattern": "\\bsudo\\b" },
-            { "pattern": "\\brm\\s+-[a-zA-Z]*r" },
-            { "pattern": "git\\s+push\\b.*\\s(--force|-f)\\b" },
-            { "pattern": "git\\s+reset\\s+--hard" },
-            { "pattern": "git\\s+clean\\s+-[a-zA-Z]*f" },
-            { "pattern": "\\bterraform\\s+(apply|destroy)\\b" },
-            { "pattern": "\\b(npm|pnpm|yarn)\\s+publish\\b" },
-            { "pattern": "\\bdotnet\\s+nuget\\s+push\\b" },
-            { "pattern": "\\bdotnet\\s+ef\\s+database\\s+(drop|update)\\b" },
-            { "pattern": "\\bmvn\\b.*\\b(deploy|release:)" },
-            { "pattern": "\\b(gradlew|gradle)\\b.*\\b(publish|release)" },
-            { "pattern": "\\bdocker\\s+(system\\s+prune|volume\\s+rm)\\b" },
-            { "pattern": "\\|\\s*(sh|bash)\\b" },
+            {
+              "pattern": "\\bsudo\\b",
+            },
+            {
+              "pattern": "\\brm\\s+-[a-zA-Z]*r",
+            },
+            {
+              "pattern": "git\\s+push\\b.*\\s(--force|-f)\\b",
+            },
+            {
+              "pattern": "git\\s+reset\\s+--hard",
+            },
+            {
+              "pattern": "git\\s+clean\\s+-[a-zA-Z]*f",
+            },
+            {
+              "pattern": "\\bterraform\\s+(apply|destroy)\\b",
+            },
+            {
+              "pattern": "\\b(npm|pnpm|yarn)\\s+publish\\b",
+            },
+            {
+              "pattern": "\\bdotnet\\s+nuget\\s+push\\b",
+            },
+            {
+              "pattern": "\\bdotnet\\s+ef\\s+database\\s+(drop|update)\\b",
+            },
+            {
+              "pattern": "\\bmvn\\b.*\\b(deploy|release:)",
+            },
+            {
+              "pattern": "\\b(gradlew|gradle)\\b.*\\b(publish|release)",
+            },
+            {
+              "pattern": "\\bdocker\\s+(system\\s+prune|volume\\s+rm)\\b",
+            },
+            {
+              "pattern": "\\|\\s*(sh|bash)\\b",
+            },
           ],
         },
         "edit_file": {
           "always_deny": [
-            { "pattern": "\\.env($|\\.|/)" },
-            { "pattern": "\\.(pem|key|crt|cert|p12|pfx)$" },
-            { "pattern": "(^|/)secrets?(/|\\.)" },
-            { "pattern": "\\.dev\\.vars$" },
-            { "pattern": "\\.tfstate" },
-            { "pattern": "(^|/)\\.ssh/" },
+            {
+              "pattern": "\\.env($|\\.|/)",
+            },
+            {
+              "pattern": "\\.(pem|key|crt|cert|p12|pfx)$",
+            },
+            {
+              "pattern": "(^|/)secrets?(/|\\.)",
+            },
+            {
+              "pattern": "\\.dev\\.vars$",
+            },
+            {
+              "pattern": "\\.tfstate",
+            },
+            {
+              "pattern": "(^|/)\\.ssh/",
+            },
           ],
         },
         "write_file": {
           "always_deny": [
-            { "pattern": "\\.env($|\\.|/)" },
-            { "pattern": "\\.(pem|key|crt|cert|p12|pfx)$" },
-            { "pattern": "(^|/)secrets?(/|\\.)" },
-            { "pattern": "\\.dev\\.vars$" },
-            { "pattern": "\\.tfstate" },
-            { "pattern": "(^|/)\\.ssh/" },
+            {
+              "pattern": "\\.env($|\\.|/)",
+            },
+            {
+              "pattern": "\\.(pem|key|crt|cert|p12|pfx)$",
+            },
+            {
+              "pattern": "(^|/)secrets?(/|\\.)",
+            },
+            {
+              "pattern": "\\.dev\\.vars$",
+            },
+            {
+              "pattern": "\\.tfstate",
+            },
+            {
+              "pattern": "(^|/)\\.ssh/",
+            },
           ],
         },
         "delete_path": {
           "default": "confirm",
-          "always_deny": [{ "pattern": "(^|/)\\.git(/|$)" }],
+          "always_deny": [
+            {
+              "pattern": "(^|/)\\.git(/|$)",
+            },
+          ],
         },
         "move_path": {
           "default": "confirm",
         },
       },
     },
-
     "auto_compact": {
       "enabled": true,
       "threshold": "90%",
     },
-
     "notify_when_agent_waiting": "primary_screen",
     "play_sound_when_agent_done": "when_hidden",
     "show_turn_stats": true,
     "expand_terminal_card": false,
     "default_profile": "write",
   },
-
   // opencode as a native ACP agent, so it runs in the Agent Panel rather than
   // only in a terminal — same threads sidebar, same notify_when_agent_waiting
   // and play_sound_when_agent_done above.
@@ -98,7 +147,6 @@
       "env": {},
     },
   },
-
   "theme": {
     "mode": "system",
     "light": "Catppuccin Latte",
@@ -163,7 +211,9 @@
     "endOfLine": "lf",
     "overrides": [
       {
-        "files": ["*.json"],
+        "files": [
+          "*.json"
+        ],
         "options": {
           "singleQuote": false,
         },
@@ -297,7 +347,12 @@
     },
     "detect_venv": {
       "on": {
-        "directories": [".venv", "venv", ".env", "env"],
+        "directories": [
+          ".venv",
+          "venv",
+          ".env",
+          "env"
+        ],
         "activate_script": "default",
       },
     },
@@ -311,7 +366,9 @@
     "provider": "copilot",
     // Merged with Zed's built-in list, which already covers .env*, *.pem,
     // *.key, *.cert, *.crt, .dev.vars, secrets.yml and Zed's own config files.
-    "disabled_globs": ["**/secrets.yaml"],
+    "disabled_globs": [
+      "**/secrets.yaml"
+    ],
   },
   "auto_install_extensions": {
     "catppuccin": true,
@@ -356,12 +413,24 @@
       "settings": {
         "typescript": {
           "inlayHints": {
-            "parameterNames": { "enabled": "literals" },
-            "parameterTypes": { "enabled": true },
-            "variableTypes": { "enabled": false },
-            "propertyDeclarationTypes": { "enabled": true },
-            "functionLikeReturnTypes": { "enabled": true },
-            "enumMemberValues": { "enabled": true },
+            "parameterNames": {
+              "enabled": "literals",
+            },
+            "parameterTypes": {
+              "enabled": true,
+            },
+            "variableTypes": {
+              "enabled": false,
+            },
+            "propertyDeclarationTypes": {
+              "enabled": true,
+            },
+            "functionLikeReturnTypes": {
+              "enabled": true,
+            },
+            "enumMemberValues": {
+              "enabled": true,
+            },
           },
           "preferences": {
             "importModuleSpecifier": "relative",
@@ -372,12 +441,24 @@
         },
         "javascript": {
           "inlayHints": {
-            "parameterNames": { "enabled": "literals" },
-            "parameterTypes": { "enabled": true },
-            "variableTypes": { "enabled": false },
-            "propertyDeclarationTypes": { "enabled": true },
-            "functionLikeReturnTypes": { "enabled": true },
-            "enumMemberValues": { "enabled": true },
+            "parameterNames": {
+              "enabled": "literals",
+            },
+            "parameterTypes": {
+              "enabled": true,
+            },
+            "variableTypes": {
+              "enabled": false,
+            },
+            "propertyDeclarationTypes": {
+              "enabled": true,
+            },
+            "functionLikeReturnTypes": {
+              "enabled": true,
+            },
+            "enumMemberValues": {
+              "enabled": true,
+            },
           },
         },
       },
@@ -420,7 +501,12 @@
     },
     "tailwindcss-language-server": {
       "settings": {
-        "classAttributes": ["class", "className", "ngClass", "styles"],
+        "classAttributes": [
+          "class",
+          "className",
+          "ngClass",
+          "styles"
+        ],
       },
     },
     "yaml-language-server": {
@@ -492,19 +578,42 @@
         "initialization_options": {
           "settings": {
             "java": {
-              "format": { "enabled": true },
-              "saveActions": { "organizeImports": true },
+              "format": {
+                "enabled": true,
+              },
+              "saveActions": {
+                "organizeImports": true,
+              },
               "import": {
-                "gradle": { "enabled": true },
-                "maven": { "enabled": true },
-                "exclusions": ["**/node_modules/**", "**/.metadata/**", "**/target/**", "**/build/**"],
+                "gradle": {
+                  "enabled": true,
+                },
+                "maven": {
+                  "enabled": true,
+                },
+                "exclusions": [
+                  "**/node_modules/**",
+                  "**/.metadata/**",
+                  "**/target/**",
+                  "**/build/**"
+                ],
               },
               "completion": {
-                "importOrder": ["java", "javax", "jakarta", "com", "org"],
+                "importOrder": [
+                  "java",
+                  "javax",
+                  "jakarta",
+                  "com",
+                  "org"
+                ],
               },
-              "referencesCodeLens": { "enabled": true },
+              "referencesCodeLens": {
+                "enabled": true
+              },
               "implementationCodeLens": "all",
-              "configuration": { "updateBuildConfiguration": "interactive" },
+              "configuration": {
+                "updateBuildConfiguration": "interactive"
+              },
             },
           },
         },
@@ -576,7 +685,10 @@
     "Python": {
       "tab_size": 4,
       "format_on_save": "off",
-      "language_servers": ["basedpyright", "ruff"],
+      "language_servers": [
+        "basedpyright",
+        "ruff"
+      ],
       "formatter": [
         {
           "language_server": {
@@ -600,7 +712,7 @@
     "JSONC": {
       "tab_size": 2,
       "format_on_save": "off",
-      "formatter": "auto",
+      "formatter": "language_server",
     },
     "HTML": {
       "tab_size": 2,
@@ -716,11 +828,29 @@
     },
   },
   "file_types": {
-    "Dockerfile": ["Dockerfile", "Dockerfile.*", "*.dockerfile"],
-    "JSON": ["*.code-snippets"],
-    "JSONC": ["tsconfig*.json", ".eslintrc.json", "turbo.json", "keybindings.json", "settings.json"],
-    "Shell Script": [".env.*", ".envrc"],
-    "Terraform": ["*.tf", "*.tfvars"],
+    "Dockerfile": [
+      "Dockerfile",
+      "Dockerfile.*",
+      "*.dockerfile"
+    ],
+    "JSON": [
+      "*.code-snippets"
+    ],
+    "JSONC": [
+      "tsconfig*.json",
+      ".eslintrc.json",
+      "turbo.json",
+      "keybindings.json",
+      "settings.json"
+    ],
+    "Shell Script": [
+      ".env.*",
+      ".envrc"
+    ],
+    "Terraform": [
+      "*.tf",
+      "*.tfvars"
+    ],
     "XML": [
       "*.csproj",
       "*.fsproj",

@@ -21,9 +21,11 @@
       "ctrl-shift-b": "workspace::ToggleLeftDock",
       "ctrl-e ctrl-o": "file_finder::Toggle",
       "ctrl-k ctrl-v": "pane::SplitRight",
-      "ctrl-k ctrl-l": "pane::SplitRight",
       "ctrl-p ctrl-p": "workspace::ToggleBottomDock",
-      "ctrl-shift-t": "terminal_panel::Toggle",
+      "ctrl-t ctrl-t": "terminal_panel::ToggleFocus",
+      "ctrl-t ctrl-n": "workspace::NewTerminal",
+      // From any non-Pane panel (project panel, git panel, ...); the terminal
+      // panel is a Pane and is handled in the "Terminal" block below.
     },
   },
   {
@@ -33,16 +35,29 @@
     },
   },
   {
+    // Zed's default "Pane" context binds cmd-1 to pane::ActivateItem 0, and the
+    // terminal panel is a Pane, so cmd-1 there jumps to terminal tab 1. This
+    // deeper context overrides it and just moves focus to the editor area.
+    // Don't chain pane::ActivateItem after it: that runs on the terminal pane
+    // and pulls focus straight back into the terminal.
+    "context": "Terminal",
+    "bindings": {},
+  },
+  {
     "context": "ProjectPanel",
     "bindings": {
       "alt-shift-f": "project_panel::NewFile",
       "alt-shift-d": "project_panel::NewDirectory",
-      "ctrl-alt-d": ["project_panel::Delete", { "skip_prompt": false }],
+      "ctrl-alt-d": [
+        "project_panel::Delete",
+        {
+          "skip_prompt": false,
+        },
+      ],
     },
   },
   // Vim leader-key mappings (leader = space), mirroring vscode's
-  // vim.normalModeKeyBindingsNonRecursive block. Zed's own vim.json already
-  // binds plain "z a"/"z c" etc. differently (ToggleFold, not FoldAll) —
+  // vim.normalModeKeyBindingsNonRecursive block. Zed's own vim.json alreadybinds plain "z a"/"z c" etc. differently (ToggleFold, not FoldAll) —
   // these entries intentionally override them to match vscode muscle memory.
   {
     "context": "vim_mode == normal && !menu",
@@ -50,19 +65,22 @@
       "space f f": "file_finder::Toggle",
       "space f s": "outline::Toggle",
       "space f z": "pane::DeploySearch",
-      "space d": ["workspace::SendKeystrokes", "d d"],
+      "space d": [
+        "workspace::SendKeystrokes",
+        "d d"
+      ],
       "space q": "pane::CloseAllItems",
       "z c": "editor::Fold",
       "z a": "editor::FoldAll",
       "z A": "editor::UnfoldAll",
       "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPreviousDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic"
     },
   },
   {
     "context": "vim_mode == insert",
     "bindings": {
-      "j k": "vim::NormalBefore",
-    },
+      "j k": "vim::NormalBefore"
+    }
   },
 ]
