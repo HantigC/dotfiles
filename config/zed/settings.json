@@ -10,7 +10,7 @@
     // agent panel in the bottom dock (shares it with the terminal),
     // thread-switcher sidebar on the left edge of the panel.
     "dock": "bottom",
-    "sidebar_side": "left",
+    "sidebar_side": "right",
     "default_height": 480,
     "limit_content_width": true,
     "max_content_width": 900,
@@ -514,7 +514,7 @@
   "languages": {
     "Vue.js": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "auto",
       "code_actions_on_format": {
         "source.fixAll.eslint": true,
@@ -523,7 +523,7 @@
     },
     "TypeScript": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "auto",
       "code_actions_on_format": {
         "source.fixAll.eslint": true,
@@ -538,7 +538,7 @@
     },
     "TSX": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "auto",
       "code_actions_on_format": {
         "source.fixAll.eslint": true,
@@ -547,7 +547,7 @@
     },
     "JavaScript": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "auto",
       "code_actions_on_format": {
         "source.fixAll.eslint": true,
@@ -557,7 +557,7 @@
     "Go": {
       "tab_size": 4,
       "hard_tabs": true,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "language_server",
       "code_actions_on_format": {
         "source.organizeImports": true,
@@ -565,17 +565,17 @@
     },
     "Terraform": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "language_server",
     },
     "HCL": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "language_server",
     },
     "Python": {
       "tab_size": 4,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "language_servers": ["basedpyright", "ruff"],
       "formatter": [
         {
@@ -591,7 +591,7 @@
     },
     "JSON": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "auto",
       "code_actions_on_format": {
         "source.fixAll.eslint": true,
@@ -599,17 +599,17 @@
     },
     "JSONC": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "auto",
     },
     "HTML": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "auto",
     },
     "CSS": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "auto",
       "code_actions_on_format": {
         "source.fixAll.stylelint": true,
@@ -617,7 +617,7 @@
     },
     "SCSS": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "auto",
       "code_actions_on_format": {
         "source.fixAll.stylelint": true,
@@ -635,42 +635,42 @@
     },
     "YAML": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "language_server",
     },
     "TOML": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "language_server",
     },
     "Markdown": {
       "format_on_save": "off",
-      "soft_wrap": "preferred_line_length",
+      "soft_wrap": "editor_width",
       "preferred_line_length": 100,
     },
     "SQL": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "auto",
     },
     "GraphQL": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "auto",
     },
     "Prisma": {
       "tab_size": 2,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "language_server",
     },
     "Dockerfile": {
       "tab_size": 4,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "auto",
     },
     "CSharp": {
       "tab_size": 4,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "language_server",
       "inlay_hints": {
         "enabled": true,
@@ -681,13 +681,13 @@
     },
     "FSharp": {
       "tab_size": 4,
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "language_server",
       "preferred_line_length": 120,
     },
     "Java": {
       "tab_size": 4,
-      "format_on_save": "on",
+      "format_on_save": "off",
       // Explicit, because Zed's defaults enable prettier-plugin-java for Java
       // and your global "formatter": "auto" would prefer it over JDTLS.
       "formatter": "language_server",
@@ -707,7 +707,7 @@
     // Added to carry over the old VS Code latex-workshop setup: format via
     // texlab (Zed's LaTeX language server, installed by the "latex" extension).
     "LaTeX": {
-      "format_on_save": "on",
+      "format_on_save": "off",
       "formatter": "language_server",
     },
     "Diff": {
