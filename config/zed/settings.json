@@ -110,9 +110,9 @@
     "dark": "Catppuccin Mocha",
   },
   "ui_font_family": ".SystemUIFont",
-  "ui_font_size": 10,
+  "ui_font_size": 11,
   "buffer_font_family": "JetBrains Mono",
-  "buffer_font_size": 10,
+  "buffer_font_size": 11,
   "buffer_font_weight": 200,
   "buffer_line_height": "comfortable",
   "buffer_font_features": {
@@ -276,7 +276,7 @@
   },
   "terminal": {
     "font_family": "JetBrainsMono Nerd Font",
-    "font_size": 10,
+    "font_size": 11,
     "font_weight": 400,
     "font_features": {
       "liga": true,

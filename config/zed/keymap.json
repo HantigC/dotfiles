@@ -35,8 +35,8 @@
   {
     "context": "ProjectPanel",
     "bindings": {
-      "alt-shift-a": "project_panel::NewFile",
-      "alt-shift-f": "project_panel::NewDirectory",
+      "alt-shift-f": "project_panel::NewFile",
+      "alt-shift-d": "project_panel::NewDirectory",
       "ctrl-alt-d": ["project_panel::Delete", { "skip_prompt": false }],
     },
   },
