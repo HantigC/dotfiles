@@ -46,6 +46,27 @@ or invoke that tool's `setup.sh` directly:
 bash config/zed/setup.sh
 ```
 
+## Windows
+
+On Windows, use the PowerShell variant instead of `make`/`bash`. Symlinks
+need either an elevated PowerShell or Developer Mode (Settings > System > For
+developers).
+
+```powershell
+git clone <this-repo> $HOME\.config\dotfiles
+cd $HOME\.config\dotfiles
+.\install.ps1              # every config that has a setup.ps1
+.\install.ps1 zed vscode   # only the named configs
+.\install.ps1 -List        # show what would be installed
+```
+
+Each `config/<tool>/setup.ps1` mirrors that tool's `setup.sh` (using
+`%APPDATA%` paths where the tool needs them) and shares the link helper in
+`lib.ps1`. Unlike `make setup`, `install.ps1` has no `CONFIGS` list — it
+installs every tool that has a `setup.ps1`. Existing files are never
+overwritten: move or delete them first (a link that's already correct is
+skipped).
+
 ## Adding/removing a config from `make setup`
 
 Edit the `CONFIGS` list at the top of the `Makefile` — add or comment out a
