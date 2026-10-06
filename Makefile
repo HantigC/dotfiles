@@ -3,6 +3,7 @@
 # becomes installable on its own as `make <name>` (e.g. `make zed`).
 # Comment out or remove an entry to skip it.
 CONFIGS := \
+	bash \
 	vscode \
 	ipython \
 	zed

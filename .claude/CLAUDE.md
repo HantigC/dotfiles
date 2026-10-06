@@ -20,6 +20,6 @@ Personal dotfiles repository managed from `~/.config/dotfiles`. Config files are
 - `cofing\zed\setup.sh` - creates symlinks for settings and keymap (Zed auto-installs extensions from settings.json, so there's no separate install step)
 - `cofing\zed\settings.json` - system wide settings for zed
 - `cofing\zed\keymap.json` - system wide keybindings for zed
-
-
-
+- `cofing\bash` - contains configurations for bash
+- `cofing\bash\setup.sh` - sources `.bash_settings` from `~/.bash_profile` (mac) or `~/.bashrc` (linux), and from `~/.zshrc` (both)
+- `cofing\bash\.bash_settings` - shell options (e.g. vi mode)
